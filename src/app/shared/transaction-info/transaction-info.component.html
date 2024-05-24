@@ -1,0 +1,72 @@
+<footer class="footer text-sm" style="font-size: 13px" *ngIf="W_PROG">
+    <div
+        (click)="display(true)"
+        class="float-right d-none d-sm-inline-block"
+        *ngIf="W_PROG"
+    >
+        Transacción {{ W_PROG }}
+        <i
+            class="pi pi-circle-on"
+            style="font-size: 0.9em"
+            [ngStyle]="{ color: getColor() }"
+        ></i>
+    </div>
+</footer>
+
+<app-dialog
+    [header]="'Información'"
+    [displayHelp]="displayHelp"
+    [draggable]="false"
+    [maximizable]="false"
+    [modal]="true"
+    [resizable]="true"
+    [closable]="false"
+>
+    <div body>
+        <div class="p-fluid p-grid">
+            <div class="p-col-4">
+                <label>Transacción</label>
+                <input type="text" pInputText disabled [(ngModel)]="W_PROG" />
+            </div>
+            <div class="p-col-4">
+                <label>Comando</label>
+                <input
+                    type="text"
+                    pInputText
+                    disabled
+                    [(ngModel)]="W_COMANDO"
+                />
+            </div>
+            <div class="p-col-4">
+                <label>Usuario</label>
+                <input type="text" pInputText disabled [(ngModel)]="W_IDEN" />
+            </div>
+            <div class="p-col-12">
+                <label>Mensaje</label>
+                <div class="p-inputgroup">
+                    <input
+                        type="text"
+                        pInputText
+                        style="width: 10%"
+                        disabled
+                        [(ngModel)]="W_TIPO_MENSA"
+                    />
+                    <input
+                        type="text"
+                        pInputText
+                        style="width: 90%"
+                        disabled
+                        [(ngModel)]="W_MENSA"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-button
+            (click)="display(false)"
+            label="Cerrar"
+            styleClass="p-button-text"
+        ></p-button>
+    </div>
+</app-dialog>

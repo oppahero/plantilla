@@ -1,0 +1,24 @@
+.layout-main-container {
+    display: flex;
+    flex-direction: column;
+    // min-height: 100vh;
+    justify-content: space-between;
+    padding: 7rem 2rem 2rem 4rem;
+    transition: margin-left $transitionDuration;
+
+
+    // Agregado
+    min-height: 100vh; // antes era 100vh
+    padding-top: 0;
+    position: relative;
+}
+
+.layout-main {
+    flex: 1 1 auto;
+
+    //Añadido
+    margin-top: 7rem;
+    height: 50vh;
+    overflow:scroll;
+    margin-right: 250px;
+}
