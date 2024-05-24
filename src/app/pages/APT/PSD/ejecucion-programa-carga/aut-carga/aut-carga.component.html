@@ -50,11 +50,11 @@
                         inputId="icon"
                         dateFormat="dd/mm/yy"
                         baseZIndex="10000"
-                        [locale]="es"
                         [yearNavigator]="true"
                         [monthNavigator]="true"
                         yearRange="2000:2050"
-                        showButtonBar="true"
+                        [iconDisplay]="'input'"
+                        [showOnFocus]="false"
                     >
                     </p-calendar>
                 </div>
@@ -263,22 +263,20 @@
     [cols]="cols"
     [rows]="rows"
     [selected]="selected"
-    [title]="title"
     [pag]="results.parametro.PAG"
     [paginator]="false"
     (selectedEvent)="selectedRow($event)"
 >
     <button
         pButton
-        type="button"
+        class="mr-2"
         label="Detalle"
-        style="margin-right: 10px"
         (click)="detail()"
         [disabled]="!selected"
     ></button>
     <button
         pButton
-        type="button"
+        class="mr-2"
         [disabled]="nextPageFlag()"
         (click)="nextPage()"
         label="Siguiente"
@@ -288,58 +286,62 @@
 <br />
 
 <p-toolbar>
-    <div style="text-align: left; padding-bottom: 1rem">
+    <div class="p-toolbar-group-start">
         <button
             pButton
-            type="button"
-            style="margin-right: 10px"
+            class="mr-2"
             label="Reordenar"
             [disabled]="rearrangeFLag()"
             (click)="rearrange()"
         ></button>
         <button
             pButton
-            type="button"
+            class="mr-2"
             label="Dev. Frente"
             [disabled]="devFrenteFlag()"
             (click)="devFrent()"
         ></button>
         <button
             pButton
-            type="button"
-            style="margin: 0px 10px 0px 10px"
+            class="mr-2"
             label="Confirmación"
             (click)="confirmDialog()"
             [disabled]="devFrenteFlag()"
         ></button>
+        <button
+            pButton
+            class="mr-2"
+            label="Cancelar"
+            (click)="cancelDialog()"
+            [disabled]="rearrangeFLag()"
+        ></button>
         <!-- <button pButton type="button" label="Alta" (click)="register()"></button> -->
         <button
             pButton
-            type="button"
+            class="mr-2"
             label="Cancelar"
             (click)="cancelDialog()"
             [disabled]="rearrangeFLag()"
         ></button>
     </div>
-    <div style="text-align: right; padding-bottom: 1rem">
+
+    <div class="p-toolbar-group-end">
         <button
             pButton
-            type="button"
-            style="margin: 0px 10px 0px 0px"
+            class="mr-2"
             label="Desp Cent Ext"
             (click)="externalCenterOffice()"
         ></button>
         <button
             pButton
-            type="button"
+            class="mr-2"
             label="ReImp. Autoriz."
             (click)="reprint()"
             [disabled]="reprintFlag()"
         ></button>
         <button
             pButton
-            type="button"
-            style="margin-left: 10px"
+            class="mr-2"
             label="Seguimiento"
             (click)="tracking()"
             [disabled]="!selected"
