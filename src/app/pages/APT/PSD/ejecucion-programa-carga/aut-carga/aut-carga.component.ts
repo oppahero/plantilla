@@ -19,8 +19,7 @@ import {
 })
 export class AutCargaComponent implements OnInit {
   user: User;
-  es: any;
-  title: any;
+  title: string;
   cols: any[];
   rows: any[];
   loading: boolean;
@@ -45,7 +44,6 @@ export class AutCargaComponent implements OnInit {
   ) {
     this.results.parametro.PAG = '';
     this.title = 'Ejecución de Programa de Carga - Autorización Carga';
-    this.es = this.util.es;
   }
 
   ngOnInit(): void {
