@@ -33,12 +33,15 @@ $gutter: 1rem; //for primeflex grid system
     width: 250px;
     position: fixed;
     color: white;
-    background-color: var(--surface-card);
-    background-color: black;
-    height: 200px;
-    z-index: 999;
+    background-color: var( --surface-50);
+    // background-color: black;
+    height: 91vh;
+    z-index: 998;
     right: 0;
     bottom: 0;
+
     overflow-y: auto;
+    box-shadow: -3px 0px 3px rgba(0,0,0,.05);
+    // 0px 0px 2px rgba(0,0,0,.05), 0px 1px 4px rgba(0,0,0,.08)
 }
 
