@@ -4,7 +4,6 @@ import { EjecucionProgramaCargaComponent } from './ejecucion-programa-carga.comp
 import { AutCargaComponent } from './aut-carga/aut-carga.component';
 import { AutCargaDetComponent } from './aut-carga-det/aut-carga-det.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -25,7 +24,7 @@ const routes: Routes = [
           {
             path: 'detalle/:autCarga',
             component: AutCargaDetComponent,
-          }
+          },
         ],
       },
     ],

@@ -4,30 +4,30 @@ import { ConfirmDialogModule as ConfirmDialog } from 'primeng/confirmdialog';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-confirm-dialog',
-    standalone: true,
-    imports: [CommonModule, ConfirmDialog],
-    template: `
-        <p-confirmDialog [closable]="false" [style]="{ width: '450px' }">
-        </p-confirmDialog>
-    `,
-    providers: [ConfirmationService],
+  selector: 'app-confirm-dialog',
+  standalone: true,
+  imports: [CommonModule, ConfirmDialog],
+  template: `
+    <p-confirmDialog [closable]="false" [style]="{ width: '450px' }">
+    </p-confirmDialog>
+  `,
+  providers: [ConfirmationService],
 })
 export class ConfirmDialogComponent {
-    @Output() acceptEvent = new EventEmitter<any>();
+  @Output() acceptEvent = new EventEmitter<any>();
 
-    constructor(private confirmationService: ConfirmationService) {}
+  constructor(private confirmationService: ConfirmationService) {}
 
-    show(mssg: any, key: any) {
-        this.confirmationService.confirm({
-            header: 'Confirmación',
-            message: mssg,
-            icon: 'pi pi-exclamation-triangle',
-            acceptLabel: 'Si',
-            rejectLabel: 'No',
-            accept: () => {
-                this.acceptEvent.emit(key);
-            },
-        });
-    }
+  show(mssg: any, key: any) {
+    this.confirmationService.confirm({
+      header: 'Confirmación',
+      message: mssg,
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
+      accept: () => {
+        this.acceptEvent.emit(key);
+      },
+    });
+  }
 }

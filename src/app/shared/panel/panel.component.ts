@@ -3,16 +3,16 @@ import { Component, Input } from '@angular/core';
 import { PanelModule } from 'primeng/panel';
 
 @Component({
-    selector: 'app-panel',
-    standalone: true,
-    imports: [CommonModule, PanelModule],
-    template: `
-        <p-panel header="{{ header }}" [toggleable]="toogle">
-            <ng-content></ng-content>
-        </p-panel>
-    `,
+  selector: 'app-panel',
+  standalone: true,
+  imports: [CommonModule, PanelModule],
+  template: `
+    <p-panel header="{{ header }}" [toggleable]="toogle">
+      <ng-content></ng-content>
+    </p-panel>
+  `,
 })
 export class PanelComponent {
-    @Input() header: any;
-    @Input() toogle: boolean;
+  @Input() header: any;
+  @Input() toogle: boolean;
 }

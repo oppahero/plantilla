@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import {
-    DatePipe,
-    HashLocationStrategy,
-    LocationStrategy,
-    PathLocationStrategy,
+  DatePipe,
+  HashLocationStrategy,
+  LocationStrategy,
+  PathLocationStrategy,
 } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,24 +21,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        AppLayoutModule,
-    ],
-    providers: [
-        DatePipe,
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-        CountryService,
-        CustomerService,
-        EventService,
-        IconService,
-        NodeService,
-        PhotoService,
-        ProductService,
-    ],
-    bootstrap: [AppComponent],
+  declarations: [AppComponent, NotfoundComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    AppLayoutModule,
+  ],
+  providers: [
+    DatePipe,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    CountryService,
+    CustomerService,
+    EventService,
+    IconService,
+    NodeService,
+    PhotoService,
+    ProductService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

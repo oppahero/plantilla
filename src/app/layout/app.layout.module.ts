@@ -14,33 +14,32 @@ import { AppMenuComponent } from './components/appMenu/app.menu.component';
 import { AppMenuitemComponent } from './components/appMenu/app.menuitem.component';
 import { AppFooterComponent } from './components/appFooter/app.footer.component';
 import { AppTopBarComponent } from './components/appTopbar/app.topbar.component';
-import { AppSidebarComponent } from "./components/appSidebar/app.sidebar.component";
+import { AppSidebarComponent } from './components/appSidebar/app.sidebar.component';
 import { AppConfigModule } from './config/config.module';
-import { AppLayoutComponent } from "./app.layout.component";
+import { AppLayoutComponent } from './app.layout.component';
 @NgModule({
-    declarations: [
-        AppMenuitemComponent,
-        AppTopBarComponent,
-        AppFooterComponent,
-        AppMenuComponent,
-        AppSidebarComponent,
-        AppLayoutComponent,
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        InputTextModule,
-        SidebarModule,
-        BadgeModule,
-        RadioButtonModule,
-        InputSwitchModule,
-        RippleModule,
-        RouterModule,
-        AppConfigModule,
-
-    ],
-    exports: [AppLayoutComponent]
+  declarations: [
+    AppMenuitemComponent,
+    AppTopBarComponent,
+    AppFooterComponent,
+    AppMenuComponent,
+    AppSidebarComponent,
+    AppLayoutComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    SidebarModule,
+    BadgeModule,
+    RadioButtonModule,
+    InputSwitchModule,
+    RippleModule,
+    RouterModule,
+    AppConfigModule,
+  ],
+  exports: [AppLayoutComponent],
 })
-export class AppLayoutModule { }
+export class AppLayoutModule {}

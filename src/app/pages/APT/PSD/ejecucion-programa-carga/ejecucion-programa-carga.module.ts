@@ -30,7 +30,7 @@ import { AccordionModule } from 'primeng/accordion';
     EjecProgCargaLargoRouting,
     SharedModule,
     // HelpsAptModule,
-    AccordionModule
+    AccordionModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

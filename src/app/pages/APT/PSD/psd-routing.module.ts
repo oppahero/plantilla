@@ -14,7 +14,7 @@ const routes: Routes = [
           import(
             '../PSD/ejecucion-programa-carga/ejecucion-programa-carga.module'
           ).then((m) => m.EjecProgCargaLargosModule),
-      }
+      },
     ],
   },
 ];

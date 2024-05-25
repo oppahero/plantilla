@@ -1,6 +1,6 @@
 export interface User {
-    username?,
-    name?,
-    dni?,
-    password?
+  username?;
+  name?;
+  dni?;
+  password?;
 }

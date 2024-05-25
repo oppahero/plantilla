@@ -1,0 +1,54 @@
+#En la plantilla
+- Menu tipo Overlay
+- Tamaño letra 11px
+
+#En los componentes genericos que tenemos
+    -Se modifico la sección de summary para usar las nuevas propiedades de flex
+
+
+
+#En las operaciones
+
+    Clases creadas para modificar estilos
+        Tarjeta con meno padding y bordes rectos
+        .card--operation {
+            padding: 1rem;
+            border-radius: 0;
+        }
+
+        Para reducir espacio entre las filas de campos
+        .field--operation {
+            margin-bottom: 0;
+        }
+
+        Para el botón de consulta añadir: style="width: auto"
+
+    En los p-toolbar
+        -Usar las secciones
+            <div class="p-toolbar-group-start">
+            <div class="p-toolbar-group-center">
+            <div class="p-toolbar-group-end">
+        -Para la separación entre los botones usar la clase:  class="mr-2"
+
+#Propiedades En los componente de PrimeNG
+
+- Calendarios:
+
+    Añadir:
+      [iconDisplay]="'input'"  : Icono calendario sencillo
+      [showOnFocus]="false"    : Abre calendario si se da en el icono
+
+    Retirar:
+       [locale]="es"   : ya no está disponible
+
+    Nota: Se podria retirar  showButtonBar="true"
+    https://primeng.org/configuration#locale
+
+- Tablas
+
+    Definir:
+        styleClass="p-datatable-gridlines"    : Para que se marquen las diviciones
+        scrollHeight="400px" (fixed headers)  : Para darle un tamaño fijo al alto de la tabla
+
+
+    Notas: Hay tablas que no requieren titulo

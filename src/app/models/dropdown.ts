@@ -1,4 +1,4 @@
-export interface  NgDropdown{
-    label: string
-    value: string | number
+export interface NgDropdown {
+  label: string;
+  value: string | number;
 }

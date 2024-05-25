@@ -55,29 +55,29 @@ export class AutCargaComponent implements OnInit {
     this.consult();
   }
 
-  setCols(){
+  setCols() {
     this.cols = [
-        { field: 'NN_SECUEN_VIAJE', header: 'Sec. Despacho' },
-        { field: 'NN_SECUEN_PROG', header: 'Autorización Carga' },
-        { field: 'CC_ORDEN_DESP', header: 'Orden de Entrega' },
-        { field: 'CC_POS_ODESP', header: 'Posición' },
-        { field: 'DD_CLI_DESTINO', header: 'Cliente Destino' },
-        { field: 'CC_COND_ENTREG', header: 'Cond. Entrega' },
-        { field: 'DD_PUERTO', header: 'Pto. Destino' },
-        { field: 'DD_PRODUCTO', header: 'Producto' },
-        { field: 'QQ_CARGA_PROG', header: 'Peso Prgdo. (Kg)' },
-        { field: 'QQ_CARGA_DESP', header: 'Peso Neto Desp. (Kg)' },
-        { field: 'FF_CARGA', header: 'Fecha Prgdo.' },
-        { field: 'HH_CARGA', header: 'Hora Prgdo.' },
-        { field: 'CC_PROG_DESP', header: 'Programa' },
-        { field: 'DD_EDO_PROG', header: 'Edo. Autorización' },
-        { field: 'DD_TIPO_VIAJE', header: 'Tipo Viaje' },
-        { field: 'DD_CIA_TRANSPORTE', header: 'Cía. Transportista' },
-        { field: 'DD_NOMBRE_COND', header: 'Conductor' },
-        { field: 'CC_TRSP_MOVIL', header: 'Placa Móvil' },
-        { field: 'CC_TRSP_CARGA', header: 'Placa Carga' },
-        { field: 'MM_IND_ELAB', header: 'Origen' },
-      ];
+      { field: 'NN_SECUEN_VIAJE', header: 'Sec. Despacho' },
+      { field: 'NN_SECUEN_PROG', header: 'Autorización Carga' },
+      { field: 'CC_ORDEN_DESP', header: 'Orden de Entrega' },
+      { field: 'CC_POS_ODESP', header: 'Posición' },
+      { field: 'DD_CLI_DESTINO', header: 'Cliente Destino' },
+      { field: 'CC_COND_ENTREG', header: 'Cond. Entrega' },
+      { field: 'DD_PUERTO', header: 'Pto. Destino' },
+      { field: 'DD_PRODUCTO', header: 'Producto' },
+      { field: 'QQ_CARGA_PROG', header: 'Peso Prgdo. (Kg)' },
+      { field: 'QQ_CARGA_DESP', header: 'Peso Neto Desp. (Kg)' },
+      { field: 'FF_CARGA', header: 'Fecha Prgdo.' },
+      { field: 'HH_CARGA', header: 'Hora Prgdo.' },
+      { field: 'CC_PROG_DESP', header: 'Programa' },
+      { field: 'DD_EDO_PROG', header: 'Edo. Autorización' },
+      { field: 'DD_TIPO_VIAJE', header: 'Tipo Viaje' },
+      { field: 'DD_CIA_TRANSPORTE', header: 'Cía. Transportista' },
+      { field: 'DD_NOMBRE_COND', header: 'Conductor' },
+      { field: 'CC_TRSP_MOVIL', header: 'Placa Móvil' },
+      { field: 'CC_TRSP_CARGA', header: 'Placa Carga' },
+      { field: 'MM_IND_ELAB', header: 'Origen' },
+    ];
   }
 
   filter(results): any {

@@ -10,19 +10,18 @@ import { ExcelService } from 'src/app/services/excel.service';
 @Component({
   selector: 'app-reorder-table',
   standalone: true,
-  imports:[
+  imports: [
     CommonModule,
     TableModule,
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
     TooltipModule,
-    ButtonModule
+    ButtonModule,
   ],
   templateUrl: './reorder-table.component.html',
 })
 export class ReorderTableComponent implements OnInit {
-
   @Input() autoLayout: boolean;
   @Input() loading: boolean;
   @Input() cols: any[];
@@ -35,22 +34,22 @@ export class ReorderTableComponent implements OnInit {
   @Input() excel: boolean;
   @Input() filters: boolean;
   @Input() reorder: boolean;
-  
+
   @Input() title: any;
   @Input() pag: any;
   @Output() selectedEvent = new EventEmitter<any>();
 
   filter: boolean;
-  first: number= 0;
-  rows_: any[]
+  first: number = 0;
+  rows_: any[];
 
   @Input()
   set rows(val: any) {
-    this.rows_ = val;    
-    console.log("en rows:", this.rows_ );
-    this.first = 0 ;
+    this.rows_ = val;
+    console.log('en rows:', this.rows_);
+    this.first = 0;
   }
-  
+
   constructor(private excelService: ExcelService) {}
 
   ngOnInit(): void {
@@ -66,8 +65,7 @@ export class ReorderTableComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.rows_, 'DOCUMENT');
   }
 
-  filtersChange(){
-    this.filter = this.filter ? false : true; 
+  filtersChange() {
+    this.filter = this.filter ? false : true;
   }
-
 }

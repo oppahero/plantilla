@@ -1,364 +1,216 @@
 <div class="grid">
-    <div class="col-12">
-        <div class="card card--operation">
-            <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-2 field--operation">
-                    <label htmlFor="D_NOMBRE_CIA_ABREV">Sociedad</label>
-                    <input
-                        pInputText
-                        id="D_NOMBRE_CIA_ABREV"
-                        type="text"
-                        [(ngModel)]="results.parametro.D_NOMBRE_CIA_ABREV"
-                        disabled
-                    />
-                </div>
-                <div class="field col-12 md:col-2 field--operation">
-                    <label htmlFor="lastname2">Centro</label>
-                    <p-inputGroup>
-                        <input
-                            pInputText
-                            style="width: 50%"
-                            [(ngModel)]="results.parametro.C_GRP_ALM"
-                            disabled
-                        />
-                        <input
-                            pInputText
-                            style="width: 50%"
-                            [(ngModel)]="results.parametro.D_GRP_ALM"
-                            disabled
-                        />
-                    </p-inputGroup>
-                </div>
-                <div class="field col-12 md:col-2 field--operation">
-                    <label htmlFor="N_PROG_DESP">Programa</label>
-                    <input
-                        id="N_PROG_DESP"
-                        pInputText
-                        [FillWithCero]="10"
-                        [value]="results.parametro.N_PROG_DESP"
-                        (input)="
-                            results.parametro.N_PROG_DESP = $event.target.value
-                        "
-                    />
-                </div>
-                <div class="field col-12 md:col-2 field--operation">
-                    <label htmlFor="F_CARGA">Fecha</label>
-                    <p-calendar
-                        id="F_CARGA"
-                        [(ngModel)]="date"
-                        [showIcon]="true"
-                        inputId="icon"
-                        dateFormat="dd/mm/yy"
-                        baseZIndex="10000"
-                        [yearNavigator]="true"
-                        [monthNavigator]="true"
-                        yearRange="2000:2050"
-                        [iconDisplay]="'input'"
-                        [showOnFocus]="false"
-                    >
-                    </p-calendar>
-                </div>
-                <div class="field col-12 md:col-3 field--operation">
-                    <label htmlFor="N_SECUEN_PROG_MDW"
-                        >Autorización Carga</label
-                    >
-                    <input
-                        id="N_SECUEN_PROG_MDW"
-                        pInputText
-                        [FillWithCero]="10"
-                        [value]="results.parametro.N_SECUEN_PROG_MDW"
-                        (input)="
-                            results.parametro.N_SECUEN_PROG_MDW =
-                                $event.target.value
-                        "
-                    />
-                </div>
-                <div class="field col-12 md:col-6 field--operation">
-                    <label>Edo Autorización</label>
-                    <p-inputGroup>
-                        <input
-                            style="width: 10%"
-                            pInputText
-                            [FillWithCero]="2"
-                            [value]="results.parametro.C_EDO_PROG_MDW"
-                            (input)="
-                                results.parametro.C_EDO_PROG_MDW =
-                                    $event.target.value
-                            "
-                        />
-                        <input
-                            [(ngModel)]="results.parametro.D_EDO_PROG"
-                            [disabled]="true"
-                            style="width: 70%"
-                            pInputText
-                        />
-                        <button
-                            pButton
-                            pRipple
-                            style="width: auto"
-                            pTooltip="Mostrar ayuda"
-                            tooltipPosition="top"
-                            label="..."
-                            (click)="displayChange(true)"
-                        ></button>
-                    </p-inputGroup>
-                </div>
-                <div
-                    class="field col-12 md:col-3 field--operation flex-align-end"
-                >
-                    <button
-                        style="width: auto"
-                        pButton
-                        pRipple
-                        label="Consultar"
-                        (click)="consult()"
-                    ></button>
-                </div>
-            </div>
+  <div class="col-12">
+    <div class="card card--operation">
+      <div class="p-fluid p-formgrid grid">
+        <div class="field col-12 md:col-2 field--operation">
+          <label htmlFor="D_NOMBRE_CIA_ABREV">Sociedad</label>
+          <input
+            pInputText
+            id="D_NOMBRE_CIA_ABREV"
+            type="text"
+            [(ngModel)]="results.parametro.D_NOMBRE_CIA_ABREV"
+            disabled
+          />
         </div>
-    </div>
-</div>
-
-<!-- <p-toolbar>
-  <div class="p-fluid">
-    <div class="p-field p-grid">
-      <div class="p-col-3">
-        <label for="D_NOMBRE_CIA_ABREV" class="p-col-fixed p-d-flex p-jc-end"
-          >Sociedad:</label
-        >
-      </div>
-      <div class="p-col-3">
-        <input
-          id="D_NOMBRE_CIA_ABREV"
-          type="text"
-          pInputText
-          [(ngModel)]="results.parametro.D_NOMBRE_CIA_ABREV"
-          disabled
-        />
-      </div>
-      <div class="p-col-3">
-        <label class="p-col-fixed p-d-flex p-jc-end">Centro:</label>
-      </div>
-      <div class="p-col-3">
-        <input
-          id="C_GRP_ALM"
-          type="text"
-          pInputText
-          style="width: 30%; margin: 0px 0px 0px 0px"
-          [(ngModel)]="results.parametro.C_GRP_ALM"
-          disabled
-        />
-        <input
-          id="D_GRP_ALM"
-          type="text"
-          pInputText
-          style="width: 70%"
-          [(ngModel)]="results.parametro.D_GRP_ALM"
-          disabled
-        />
-      </div>
-    </div>
-    <div class="p-field p-grid">
-      <div class="p-col-3">
-        <label for="N_PROG_DESP" class="p-col-fixed p-d-flex p-jc-end"
-          >Programa:</label
-        >
-      </div>
-      <div class="p-col-3">
-        <input
-          id="N_PROG_DESP"
-          type="text"
-          pInputText
-          [FillWithCero]="10"
-          [value]="results.parametro.N_PROG_DESP"
-          (input)="results.parametro.N_PROG_DESP = $event.target.value"
-        />
-      </div>
-      <div class="p-col-3">
-        <label for="F_CARGA" class="p-col-fixed p-d-flex p-jc-end"
-          >Fecha:</label
-        >
-      </div>
-      <div class="p-col-3">
-        <p-calendar
-          id="F_CARGA"
-          [(ngModel)]="date"
-          [showIcon]="true"
-          inputId="icon"
-          dateFormat="dd/mm/yy"
-          baseZIndex="10000"
-          [locale]="es"
-          [yearNavigator]="true"
-          [monthNavigator]="true"
-          yearRange="2000:2050"
-          showButtonBar="true"
-        >
-        </p-calendar>
-      </div>
-    </div>
-    <div class="p-field p-grid">
-      <div class="p-col-3">
-        <label for="N_SECUEN_PROG_MDW" class="p-col-fixed p-d-flex p-jc-end"
-          >Autorización Carga:</label
-        >
-      </div>
-      <div class="p-col-3">
-        <input
-          id="N_SECUEN_PROG_MDW"
-          type="text"
-          pInputText
-          [FillWithCero]="10"
-          [value]="results.parametro.N_SECUEN_PROG_MDW"
-          (input)="results.parametro.N_SECUEN_PROG_MDW = $event.target.value"
-        />
-      </div>
-    </div>
-    <div class="p-field p-grid">
-      <div class="p-col-3">
-        <label for="C_EDO_PROG" class="p-col-fixed p-d-flex p-jc-end"
-          >Edo Autorización:</label
-        >
-      </div>
-      <div class="p-col-7">
-        <input
-          id="C_EDO_PROG_MDW"
-          type="text"
-          style="width: 10%"
-          pInputText
-          [FillWithCero]="2"
-          [value]="results.parametro.C_EDO_PROG_MDW"
-          (input)="results.parametro.C_EDO_PROG_MDW = $event.target.value"
-        />
-        <input
-          id="D_EDO_PROG"
-          [(ngModel)]="results.parametro.D_EDO_PROG"
-          type="text"
-          [disabled]="true"
-          style="width: 80%"
-          pInputText
-        />
-        <button
-          pButton
-          pRipple
-          style="width: 10%"
-          pTooltip="Mostrar ayuda"
-          tooltipPosition="top"
-          label="..."
-          (click)="displayChange(true)"
-        ></button>
-      </div>
-      <div class="p-col-2">
-        <button pButton pRipple label="Consultar" (click)="consult()"></button>
+        <div class="field col-12 md:col-2 field--operation">
+          <label htmlFor="lastname2">Centro</label>
+          <p-inputGroup>
+            <input
+              pInputText
+              style="width: 50%"
+              [(ngModel)]="results.parametro.C_GRP_ALM"
+              disabled
+            />
+            <input
+              pInputText
+              style="width: 50%"
+              [(ngModel)]="results.parametro.D_GRP_ALM"
+              disabled
+            />
+          </p-inputGroup>
+        </div>
+        <div class="field col-12 md:col-2 field--operation">
+          <label htmlFor="N_PROG_DESP">Programa</label>
+          <input
+            id="N_PROG_DESP"
+            pInputText
+            [FillWithCero]="10"
+            [value]="results.parametro.N_PROG_DESP"
+            (input)="results.parametro.N_PROG_DESP = $event.target.value"
+          />
+        </div>
+        <div class="field col-12 md:col-2 field--operation">
+          <label htmlFor="F_CARGA">Fecha</label>
+          <p-calendar
+            id="F_CARGA"
+            [(ngModel)]="date"
+            [showIcon]="true"
+            inputId="icon"
+            dateFormat="dd/mm/yy"
+            baseZIndex="10000"
+            [yearNavigator]="true"
+            [monthNavigator]="true"
+            yearRange="2000:2050"
+            [iconDisplay]="'input'"
+            [showOnFocus]="false"
+          >
+          </p-calendar>
+        </div>
+        <div class="field col-12 md:col-3 field--operation">
+          <label htmlFor="N_SECUEN_PROG_MDW">Autorización Carga</label>
+          <input
+            id="N_SECUEN_PROG_MDW"
+            pInputText
+            [FillWithCero]="10"
+            [value]="results.parametro.N_SECUEN_PROG_MDW"
+            (input)="results.parametro.N_SECUEN_PROG_MDW = $event.target.value"
+          />
+        </div>
+        <div class="field col-12 md:col-6 field--operation">
+          <label>Edo Autorización</label>
+          <p-inputGroup>
+            <input
+              style="width: 10%"
+              pInputText
+              [FillWithCero]="2"
+              [value]="results.parametro.C_EDO_PROG_MDW"
+              (input)="results.parametro.C_EDO_PROG_MDW = $event.target.value"
+            />
+            <input
+              [(ngModel)]="results.parametro.D_EDO_PROG"
+              [disabled]="true"
+              style="width: 70%"
+              pInputText
+            />
+            <button
+              pButton
+              pRipple
+              style="width: auto"
+              pTooltip="Mostrar ayuda"
+              tooltipPosition="top"
+              label="..."
+              (click)="displayChange(true)"
+            ></button>
+          </p-inputGroup>
+        </div>
+        <div class="field col-12 md:col-3 field--operation flex-align-end">
+          <button
+            style="width: auto"
+            pButton
+            pRipple
+            label="Consultar"
+            (click)="consult()"
+          ></button>
+        </div>
       </div>
     </div>
   </div>
-</p-toolbar> -->
+</div>
 
 <br />
 
 <app-basic-table
-    [autoLayout]="true"
-    [loading]="loading"
-    [resizable]="true"
-    [cols]="cols"
-    [rows]="rows"
-    [selected]="selected"
-    [pag]="results.parametro.PAG"
-    [paginator]="false"
-    (selectedEvent)="selectedRow($event)"
+  [autoLayout]="true"
+  [loading]="loading"
+  [resizable]="true"
+  [cols]="cols"
+  [rows]="rows"
+  [selected]="selected"
+  [pag]="results.parametro.PAG"
+  [paginator]="false"
+  (selectedEvent)="selectedRow($event)"
 >
-    <button
-        pButton
-        class="mr-2"
-        label="Detalle"
-        (click)="detail()"
-        [disabled]="!selected"
-    ></button>
-    <button
-        pButton
-        class="mr-2"
-        [disabled]="nextPageFlag()"
-        (click)="nextPage()"
-        label="Siguiente"
-    ></button>
+  <button
+    pButton
+    class="mr-2"
+    label="Detalle"
+    (click)="detail()"
+    [disabled]="!selected"
+  ></button>
+  <button
+    pButton
+    class="mr-2"
+    [disabled]="nextPageFlag()"
+    (click)="nextPage()"
+    label="Siguiente"
+  ></button>
 </app-basic-table>
 
 <p-toolbar>
-    <div class="p-toolbar-group-start">
-        <button
-            pButton
-            class="mr-2"
-            label="Reordenar"
-            [disabled]="rearrangeFLag()"
-            (click)="rearrange()"
-        ></button>
-        <button
-            pButton
-            class="mr-2"
-            label="Dev. Frente"
-            [disabled]="devFrenteFlag()"
-            (click)="devFrent()"
-        ></button>
-        <button
-            pButton
-            class="mr-2"
-            label="Confirmación"
-            (click)="confirmDialog()"
-            [disabled]="devFrenteFlag()"
-        ></button>
-        <button
-            pButton
-            class="mr-2"
-            label="Cancelar"
-            (click)="cancelDialog()"
-            [disabled]="rearrangeFLag()"
-        ></button>
-        <!-- <button pButton type="button" label="Alta" (click)="register()"></button> -->
-        <button
-            pButton
-            class="mr-2"
-            label="Cancelar"
-            (click)="cancelDialog()"
-            [disabled]="rearrangeFLag()"
-        ></button>
-    </div>
-
-    <div class="p-toolbar-group-end">
-        <button
-            pButton
-            class="mr-2"
-            label="Desp Cent Ext"
-            (click)="externalCenterOffice()"
-        ></button>
-        <button
-            pButton
-            class="mr-2"
-            label="ReImp. Autoriz."
-            (click)="reprint()"
-            [disabled]="reprintFlag()"
-        ></button>
-        <button
-            pButton
-            class="mr-2"
-            label="Seguimiento"
-            (click)="tracking()"
-            [disabled]="!selected"
-        ></button>
-    </div>
+  <div class="p-toolbar-group-start">
+    <button
+      pButton
+      class="mr-2"
+      label="Reordenar"
+      [disabled]="rearrangeFLag()"
+      (click)="rearrange()"
+    ></button>
+    <button
+      pButton
+      class="mr-2"
+      label="Dev. Frente"
+      [disabled]="devFrenteFlag()"
+      (click)="devFrent()"
+    ></button>
+    <button
+      pButton
+      class="mr-2"
+      label="Confirmación"
+      (click)="confirmDialog()"
+      [disabled]="devFrenteFlag()"
+    ></button>
+    <button
+      pButton
+      class="mr-2"
+      label="Cancelar"
+      (click)="cancelDialog()"
+      [disabled]="rearrangeFLag()"
+    ></button>
+    <!-- <button pButton type="button" label="Alta" (click)="register()"></button> -->
+    <button
+      pButton
+      class="mr-2"
+      label="Cancelar"
+      (click)="cancelDialog()"
+      [disabled]="rearrangeFLag()"
+    ></button>
+  </div>
+  <div class="p-toolbar-group-end">
+    <button
+      pButton
+      class="mr-2"
+      label="Desp Cent Ext"
+      (click)="externalCenterOffice()"
+    ></button>
+    <button
+      pButton
+      class="mr-2"
+      label="ReImp. Autoriz."
+      (click)="reprint()"
+      [disabled]="reprintFlag()"
+    ></button>
+    <button
+      pButton
+      class="mr-2"
+      label="Seguimiento"
+      (click)="tracking()"
+      [disabled]="!selected"
+    ></button>
+  </div>
 </p-toolbar>
 
 <app-transaction-info
-    [W_PROG]="results.parametro.W_PROG"
-    [W_COMANDO]="results.parametro.PAR_COMANDO"
-    [W_IDEN]="results.parametro.PAR_IDEN"
-    [W_TIPO_MENSA]="results.parametro.W_TIPO_MENSA"
-    [W_MENSA]="results.parametro.W_MENSA"
+  [W_PROG]="results.parametro.W_PROG"
+  [W_COMANDO]="results.parametro.PAR_COMANDO"
+  [W_IDEN]="results.parametro.PAR_IDEN"
+  [W_TIPO_MENSA]="results.parametro.W_TIPO_MENSA"
+  [W_MENSA]="results.parametro.W_MENSA"
 ></app-transaction-info>
 
 <app-edo-programa
-    (displayEvent)="displayChange($event)"
-    (selectEvent)="selectedHelp($event)"
-    [displayHelp]="displayHelp"
+  (displayEvent)="displayChange($event)"
+  (selectEvent)="selectedHelp($event)"
+  [displayHelp]="displayHelp"
 ></app-edo-programa>
 
 <app-confirm-dialog (acceptEvent)="confirmDialogAccept($event)">
