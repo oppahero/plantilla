@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { GlobalService } from '..';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AutCargaLargosDetService {
   private url: string;
 
   constructor(private http: HttpClient, private util: GlobalService) {
-    this.url = 'http://localhost/opensipca-back/public/index.php/api/' + 'prog-carga-largos-detalle';
+    this.url = environment.apiUrl + 'prog-carga-largos-detalle';
   }
 
   getAll(data): Observable<any> {

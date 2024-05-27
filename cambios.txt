@@ -1,16 +1,17 @@
 #En la plantilla
 - Menu tipo Overlay
 - Tamaño letra 11px
+- Gutter de 1rem a 0.3rem
 
 #En los componentes genericos que tenemos
     -Se modifico la sección de summary para usar las nuevas propiedades de flex
-
+    -Se modifico el transactionInfo para usar propiedades flex
 
 
 #En las operaciones
 
     Clases creadas para modificar estilos
-        Tarjeta con meno padding y bordes rectos
+        Tarjeta con menos padding y bordes rectos
         .card--operation {
             padding: 1rem;
             border-radius: 0;
@@ -21,7 +22,16 @@
             margin-bottom: 0;
         }
 
-        Para el botón de consulta añadir: style="width: auto"
+        Para alinear el botón de consulta:
+        .flex-align-end {
+            align-self: end;
+            padding-bottom: 0.3rem;
+        }
+
+        Para el botón de consulta añadir: 
+            style="width: auto"
+            class= flex-align-end
+            
 
     En los p-toolbar
         -Usar las secciones
@@ -29,6 +39,7 @@
             <div class="p-toolbar-group-center">
             <div class="p-toolbar-group-end">
         -Para la separación entre los botones usar la clase:  class="mr-2"
+
 
 #Propiedades En los componente de PrimeNG
 

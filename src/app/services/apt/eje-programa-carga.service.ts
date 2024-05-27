@@ -8,8 +8,6 @@ export class EjeProgramaCargaService {
   private message = new BehaviorSubject<any>(new Array());
   public customMessage = this.message.asObservable();
 
-  constructor() {}
-
   private activeTab(item: any): void {
     this.message.next(item);
   }

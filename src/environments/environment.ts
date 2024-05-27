@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://localhost/opensipca-back/public/index.php/api/',
+  apiUrlSeguridad:
+    'http://sirprdsvvapc21.sidor.net/seguridad-back/public/index.php/api/',
+  apiUrlLDAP: 'http://sirprdsvvapc21.sidor.net/ldap-back/public/index.php/api/',
+  // apiUrlPermanencia: 'http://10.50.31.103/permanencias-sql-back/public/index.php/api/',
+  apiUrlPermanencia:
+    'http://vmwpcon1.sidor.net/permanencias-sql-back/public/index.php/api/',
+  apiUrlSQL: 'http://localhost/opensipca-sql-back/public/index.php/api/',
 };
 
 /*

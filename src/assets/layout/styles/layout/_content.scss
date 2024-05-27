@@ -1,24 +1,26 @@
 .layout-main-container {
     display: flex;
     flex-direction: column;
-    // min-height: 100vh;
+    min-height: 100vh;
     justify-content: space-between;
     padding: 7rem 2rem 2rem 4rem;
     transition: margin-left $transitionDuration;
 
 
-    // Agregado
-    min-height: 100vh; // antes era 100vh
+    // !AÑADIDO
+    // min-height: 100vh; // antes era 100vh
+    // padding-top: 0;
+    // position: relative;
     padding-top: 0;
-    position: relative;
 }
 
 .layout-main {
     flex: 1 1 auto;
 
-    //Añadido
+   // !AÑADIDO
     margin-top: 7rem;
     height: 50vh;
     overflow:scroll;
-    margin-right: 250px;
+    // margin-right: 210px; con submenu  220px
+    margin-right: 240px;
 }

@@ -1,7 +1,7 @@
 <p-dialog
   header="{{ header }}"
   [(visible)]="displayHelp"
-  [style]="{ width: '50vw' }"
+  [style]="{ width: width }"
   [baseZIndex]="10000"
   [draggable]="draggable"
   [maximizable]="maximizable"
@@ -9,6 +9,7 @@
   [resizable]="resizable"
   [contentStyle]="{ height: height }"
   [closable]="closable"
+  [breakpoints]="breakpoints" 
 >
   <ng-content select="[header]"></ng-content>
 

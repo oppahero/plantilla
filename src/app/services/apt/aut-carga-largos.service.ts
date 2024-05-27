@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GlobalService } from '../global.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class AutCargaLargosService {
   private date: any;
 
   constructor(private http: HttpClient, private util: GlobalService) {
-    this.url = 'http://localhost/opensipca-back/public/index.php/api/' + 'ejec-prog-cargas-largos';
+    this.url = environment.apiUrl + 'ejec-prog-cargas-largos';
   }
 
   getAll(data: any) : Observable<any>{

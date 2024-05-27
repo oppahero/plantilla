@@ -64,6 +64,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
     ReactiveFormsModule,
     InputTextModule,
     CardModule,
+    InputGroupModule,
 
     ConfirmDialogComponent,
     GreyPcardComponent,

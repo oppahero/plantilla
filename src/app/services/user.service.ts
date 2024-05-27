@@ -10,7 +10,7 @@ export class UserService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    // this.url = environment.apiUrlPermanencia + 'permanencias';
+    this.url = environment.apiUrlPermanencia + 'permanencias';
   }
 
   /* Obtener cedula dado el siglado */

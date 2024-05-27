@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
@@ -16,5 +16,11 @@ export class DialogComponent {
   @Input() resizable: boolean;
   @Input() closable: boolean;
   @Input() height: any;
+  @Input() width: any;
   @Input() header: any;
+  @Input() breakpoints: {};
+
+  constructor() {
+    this.width = '50vw';
+  }
 }

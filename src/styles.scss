@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-$gutter: 1rem; //for primeflex grid system
+// !CAMBIADO, ANTES 1REM
+$gutter: 0.3rem; //for primeflex grid system
+
 @import "assets/layout/styles/layout/layout.scss";
 
 /* PrimeNG */
@@ -15,7 +17,7 @@ $gutter: 1rem; //for primeflex grid system
 
 @import " assets/layout/styles/theme/bootstrap4-light-blue/theme.css";
 
-/* Estilos editados para opensipca*/
+//! /* Estilos editados para opensipca*/
 .card--operation {
     padding: 1rem;
     border-radius: 0;
@@ -27,21 +29,24 @@ $gutter: 1rem; //for primeflex grid system
 
 .flex-align-end {
     align-self: end;
+    padding-bottom: 0.3rem;
 }
 
+// !AÑADIDO
 .subMenu{
+    // width: 220px;
     width: 250px;
     position: fixed;
     color: white;
     background-color: var( --surface-50);
     // background-color: black;
-    height: 91vh;
+    margin-top: 60px;
+    height: calc( 100% - 60px);
     z-index: 998;
     right: 0;
-    bottom: 0;
 
     overflow-y: auto;
     box-shadow: -3px 0px 3px rgba(0,0,0,.05);
+    
     // 0px 0px 2px rgba(0,0,0,.05), 0px 1px 4px rgba(0,0,0,.08)
 }
-

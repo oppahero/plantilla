@@ -17,6 +17,9 @@ import { AppTopBarComponent } from './components/appTopbar/app.topbar.component'
 import { AppSidebarComponent } from './components/appSidebar/app.sidebar.component';
 import { AppConfigModule } from './config/config.module';
 import { AppLayoutComponent } from './app.layout.component';
+import { OperacionesComponent } from './components/operaciones/operaciones.component';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { AvatarModule } from 'primeng/avatar';
 @NgModule({
   declarations: [
     AppMenuitemComponent,
@@ -25,6 +28,7 @@ import { AppLayoutComponent } from './app.layout.component';
     AppMenuComponent,
     AppSidebarComponent,
     AppLayoutComponent,
+    OperacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ import { AppLayoutComponent } from './app.layout.component';
     RippleModule,
     RouterModule,
     AppConfigModule,
+    PanelMenuModule,
+    AvatarModule
   ],
   exports: [AppLayoutComponent],
 })

@@ -1,8 +1,10 @@
-<div class="grid">
+<div class="grid mb-2">
   <div class="col-12">
     <div class="card card--operation">
       <div class="p-fluid p-formgrid grid">
-        <div class="field col-12 md:col-2 field--operation">
+        <div
+          class="field col-12  lg:col-2 md:col-3 sm:col-6 field--operation"
+        >
           <label htmlFor="D_NOMBRE_CIA_ABREV">Sociedad</label>
           <input
             pInputText
@@ -12,7 +14,7 @@
             disabled
           />
         </div>
-        <div class="field col-12 md:col-2 field--operation">
+        <div class="field col-12 lg:col-2 md:col-3 field--operation">
           <label htmlFor="lastname2">Centro</label>
           <p-inputGroup>
             <input
@@ -29,7 +31,9 @@
             />
           </p-inputGroup>
         </div>
-        <div class="field col-12 md:col-2 field--operation">
+        <div
+          class="field col-12  lg:col-2 md:col-3 sm:col-6 field--operation"
+        >
           <label htmlFor="N_PROG_DESP">Programa</label>
           <input
             id="N_PROG_DESP"
@@ -39,7 +43,7 @@
             (input)="results.parametro.N_PROG_DESP = $event.target.value"
           />
         </div>
-        <div class="field col-12 md:col-2 field--operation">
+        <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
           <label htmlFor="F_CARGA">Fecha</label>
           <p-calendar
             id="F_CARGA"
@@ -56,8 +60,8 @@
           >
           </p-calendar>
         </div>
-        <div class="field col-12 md:col-3 field--operation">
-          <label htmlFor="N_SECUEN_PROG_MDW">Autorización Carga</label>
+        <div class="field col-12 lg:col-2 md:col-3 field--operation">
+          <label htmlFor="N_SECUEN_PROG_MDW">Aut. Carga</label>
           <input
             id="N_SECUEN_PROG_MDW"
             pInputText
@@ -66,7 +70,7 @@
             (input)="results.parametro.N_SECUEN_PROG_MDW = $event.target.value"
           />
         </div>
-        <div class="field col-12 md:col-6 field--operation">
+        <div class="field col-12 md:col-7 field--operation">
           <label>Edo Autorización</label>
           <p-inputGroup>
             <input
@@ -93,7 +97,7 @@
             ></button>
           </p-inputGroup>
         </div>
-        <div class="field col-12 md:col-3 field--operation flex-align-end">
+        <div class="field field--operation flex-align-end">
           <button
             style="width: auto"
             pButton
@@ -106,8 +110,6 @@
     </div>
   </div>
 </div>
-
-<br />
 
 <app-basic-table
   [autoLayout]="true"
