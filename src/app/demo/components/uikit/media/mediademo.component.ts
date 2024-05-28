@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/demo/service/product.service';
-import { PhotoService } from 'src/app/demo/service/photo.service';
-import { Product } from 'src/app/demo/api/product';
+import { Component, OnInit } from '@angular/core'
+import { ProductService } from 'src/app/demo/service/product.service'
+import { PhotoService } from 'src/app/demo/service/photo.service'
+import { Product } from 'src/app/demo/api/product'
 
 @Component({
     templateUrl: './mediademo.component.html'
 })
 export class MediaDemoComponent implements OnInit {
 
-    products!: Product[];
+    products!: Product[]
 
-    images!: any[];
+    images!: any[]
 
     galleriaResponsiveOptions: any[] = [
         {
@@ -29,7 +29,7 @@ export class MediaDemoComponent implements OnInit {
             breakpoint: '560px',
             numVisible: 1
         }
-    ];
+    ]
 
     carouselResponsiveOptions: any[] = [
         {
@@ -47,18 +47,18 @@ export class MediaDemoComponent implements OnInit {
             numVisible: 1,
             numScroll: 1
         }
-    ];
+    ]
 
     constructor(private productService: ProductService, private photoService: PhotoService) { }
 
     ngOnInit() {
         this.productService.getProductsSmall().then(products => {
-            this.products = products;
-        });
+            this.products = products
+        })
 
         this.photoService.getImages().then(images => {
-            this.images = images;
-        });
+            this.images = images
+        })
     }
     
 }

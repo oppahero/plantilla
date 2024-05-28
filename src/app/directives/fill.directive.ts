@@ -1,20 +1,20 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core'
 
 @Directive({
   selector: '[FillWithCero]',
 })
-export class FillWithCero  {
+export class FillWithCeroDirective  {
   constructor(private el: ElementRef) {}
 
-  @Input() FillWithCero: number;
+  @Input() FillWithCero: number
 
   @HostListener('input', ['$event.target']) onKeyUp(event) {
-    let e = event;
-    let aux = Number(e.value);
+    const e = event
+    const aux = Number(e.value)
     
     if (aux) {
-      let number = aux.toString().padStart(this.FillWithCero, '0');
-      e.value = number.toString();
+      const number = aux.toString().padStart(this.FillWithCero, '0')
+      e.value = number.toString()
     }
   }
 

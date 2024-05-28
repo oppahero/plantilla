@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { TabMenuModule } from 'primeng/tabmenu';
+import { Component, Input } from '@angular/core'
+import { MenuItem } from 'primeng/api'
+import { TabMenuModule } from 'primeng/tabmenu'
 
 @Component({
   selector: 'app-tab-menu',
@@ -10,6 +11,6 @@ import { TabMenuModule } from 'primeng/tabmenu';
   `,
 })
 export class TabMenuComponent {
-  @Input() items: any[];
-  @Input() activeItem: any;
+  @Input() items: MenuItem[]
+  @Input() activeItem: MenuItem
 }

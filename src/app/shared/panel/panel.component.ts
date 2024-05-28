@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { PanelModule } from 'primeng/panel';
+import { CommonModule } from '@angular/common'
+import { Component, Input } from '@angular/core'
+import { PanelModule } from 'primeng/panel'
 
 @Component({
   selector: 'app-panel',
@@ -13,6 +13,6 @@ import { PanelModule } from 'primeng/panel';
   `,
 })
 export class PanelComponent {
-  @Input() header: any;
-  @Input() toogle: boolean;
+  @Input() header: string
+  @Input() toogle: boolean
 }

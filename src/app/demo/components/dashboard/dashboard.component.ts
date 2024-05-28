@@ -1,48 +1,48 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import { Product } from '../../api/product';
-import { ProductService } from '../../service/product.service';
-import { Subscription, debounceTime } from 'rxjs';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { MenuItem } from 'primeng/api'
+import { Product } from '../../api/product'
+import { ProductService } from '../../service/product.service'
+import { Subscription, debounceTime } from 'rxjs'
+import { LayoutService } from 'src/app/layout/service/app.layout.service'
 
 @Component({
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-    items!: MenuItem[];
+    items!: MenuItem[]
 
-    products!: Product[];
+    products!: Product[]
 
-    chartData: any;
+    chartData: any
 
-    chartOptions: any;
+    chartOptions: any
 
-    subscription!: Subscription;
+    subscription!: Subscription
 
     constructor(private productService: ProductService, public layoutService: LayoutService) {
         this.subscription = this.layoutService.configUpdate$
         .pipe(debounceTime(25))
         .subscribe((config) => {
-            this.initChart();
-        });
+            this.initChart()
+        })
     }
 
     ngOnInit() {
-        this.initChart();
-        this.productService.getProductsSmall().then(data => this.products = data);
+        this.initChart()
+        this.productService.getProductsSmall().then(data => this.products = data)
 
         this.items = [
             { label: 'Add New', icon: 'pi pi-fw pi-plus' },
             { label: 'Remove', icon: 'pi pi-fw pi-minus' }
-        ];
+        ]
     }
 
     initChart() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        const documentStyle = getComputedStyle(document.documentElement)
+        const textColor = documentStyle.getPropertyValue('--text-color')
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary')
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border')
 
         this.chartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     tension: .4
                 }
             ]
-        };
+        }
 
         this.chartOptions = {
             plugins: {
@@ -94,12 +94,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     }
                 }
             }
-        };
+        }
     }
 
     ngOnDestroy() {
         if (this.subscription) {
-            this.subscription.unsubscribe();
+            this.subscription.unsubscribe()
         }
     }
 }

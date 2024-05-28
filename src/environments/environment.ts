@@ -12,7 +12,7 @@ export const environment = {
   apiUrlPermanencia:
     'http://vmwpcon1.sidor.net/permanencias-sql-back/public/index.php/api/',
   apiUrlSQL: 'http://localhost/opensipca-sql-back/public/index.php/api/',
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

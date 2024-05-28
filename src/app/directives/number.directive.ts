@@ -1,22 +1,22 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core'
 
 @Directive({
   selector: '[decimals]',
 })
 export class NumericDirective {
-  @Input('decimals') decimals: number;
+  @Input() decimals: number
 
   private check(value: string, decimals: number) {
     if (decimals <= 0) {
-      return String(value).match(new RegExp(/^\d+$/));
+      return String(value).match(new RegExp(/^\d+$/))
     } else {
-      var regExpString =
+      const regExpString =
         '^\\s*((\\d+(\\.\\d{0,' +
         decimals +
         '})?)|((\\d*(\\.\\d{1,' +
         decimals +
-        '}))))\\s*$';
-      return String(value).match(new RegExp(regExpString));
+        '}))))\\s*$'
+      return String(value).match(new RegExp(regExpString))
     }
   }
 
@@ -28,21 +28,21 @@ export class NumericDirective {
     'ArrowLeft',
     'ArrowRight',
     'Delete',
-  ];
+  ]
 
   constructor(private el: ElementRef) {}
 
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
     if (this.specialKeys.indexOf(event.key) !== -1) {
-      return;
+      return
     }
     // Do not use event.keycode this is deprecated.
     // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
-    let current: string = this.el.nativeElement.value;
-    let next: string = current.concat(event.key);
+    const current: string = this.el.nativeElement.value
+    const next: string = current.concat(event.key)
     if (next && !this.check(next, this.decimals)) {
-      event.preventDefault();
+      event.preventDefault()
     }
   }
 }

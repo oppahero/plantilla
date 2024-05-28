@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { BlockUIModule } from 'primeng/blockui';
+import { CommonModule } from '@angular/common'
+import { Component, Input } from '@angular/core'
+import { BlockUIModule } from 'primeng/blockui'
 
 @Component({
   selector: 'app-block-ui',
@@ -9,5 +9,5 @@ import { BlockUIModule } from 'primeng/blockui';
   imports: [CommonModule, BlockUIModule],
 })
 export class BlockUiComponent {
-  @Input() blocked: boolean;
+  @Input() blocked: boolean
 }

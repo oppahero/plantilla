@@ -106,15 +106,15 @@
 
 // export * from './aut-carga-desp-ctr-ext.service';
 // export * from './aut-carga-largos-alt.service';
-export * from './aut-carga-largos-can.service';
-export * from './aut-carga-largos-confir.service';
-export * from './aut-carga-largos-det.service';
+export * from './aut-carga-largos-can.service'
+export * from './aut-carga-largos-confir.service'
+export * from './aut-carga-largos-det.service'
 // export * from './aut-carga-largos-dev-frent.service';
 // export * from './aut-carga-largos-reimp.service';
 // export * from './aut-carga-largos-reo.service';
 // export * from './aut-carga-largos-seg.service';
-export * from './aut-carga-largos.service';
-export * from './eje-programa-carga.service';
+export * from './aut-carga-largos.service'
+export * from './eje-programa-carga.service'
 // export * from './frent-carga-largos-det.service';
 // export * from './frent-carga-largos-res.service';
 // export * from './frent-carga-largos.service';

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MediaDemoComponent } from './mediademo.component';
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { MediaDemoComponent } from './mediademo.component'
 
 @NgModule({
 	imports: [RouterModule.forChild([

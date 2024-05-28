@@ -40,6 +40,10 @@
             <div class="p-toolbar-group-end">
         -Para la separación entre los botones usar la clase:  class="mr-2"
 
+    En el TS los array COLS son de tipo   cols: Column[]
+        import { Column } from 'src/app/models/primeng'
+
+
 
 #Propiedades En los componente de PrimeNG
 

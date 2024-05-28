@@ -10,8 +10,8 @@
   [resizableColumns]="resizable"
   columnResizeMode="expand"
   styleClass="p-datatable-sm"
-  (onRowSelect)="select($event)"
-  (onRowUnselect)="select($event)"
+  (onRowSelect)="select()"
+  (onRowUnselect)="select()"
   [paginator]="paginator"
   [rows]="num"
   #dt
@@ -53,12 +53,6 @@
     </div>
   </ng-template>
   <ng-template pTemplate="header" let-columns>
-    <!-- <tr [pSelectableRow]="product">
-          <th>Code</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
-      </tr> -->
     <tr>
       <th style="width: 3rem"></th>
       <th
@@ -116,11 +110,11 @@
     <div>
       <div class="p-d-flex p-jc-between">
         <div>
-          <label [hidden]="pag == null" style="padding-right: 10px"
+          <label [hidden]="pag === null" style="padding-right: 10px"
             >Página:</label
           >
           <input
-            [hidden]="pag == null"
+            [hidden]="pag === null"
             readonly
             [(ngModel)]="pag"
             type="text"

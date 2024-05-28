@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { EjecucionProgramaCargaComponent } from './ejecucion-programa-carga.component';
-import { AutCargaComponent } from './aut-carga/aut-carga.component';
-import { AutCargaDetComponent } from './aut-carga-det/aut-carga-det.component';
+import { NgModule } from '@angular/core'
+import { Routes, RouterModule } from '@angular/router'
+import { EjecucionProgramaCargaComponent } from './ejecucion-programa-carga.component'
+import { AutCargaComponent } from './aut-carga/aut-carga.component'
+import { AutCargaDetComponent } from './aut-carga-det/aut-carga-det.component'
 
 const routes: Routes = [
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
       },
     ],
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

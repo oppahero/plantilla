@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
     templateUrl: './blocks.component.html'
@@ -20,7 +20,7 @@ export class BlocksComponent{
     <div class="col-12 md:col-6 overflow-hidden">
         <img src="assets/demo/images/blocks/hero/hero-1.png" alt="Image" class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
     </div>
-</div>`;
+</div>`
 
     block2: string = `
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
@@ -73,7 +73,7 @@ export class BlocksComponent{
             <span class="text-700 text-sm line-height-3">Mattis rhoncus urna neque viverra justo nec ultrices. Id cursus metus aliquam eleifend.</span>
         </div>
     </div>
-</div>`;
+</div>`
 
     block3: string = `
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
@@ -190,7 +190,7 @@ export class BlocksComponent{
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
     block4: string = `
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
@@ -200,7 +200,7 @@ export class BlocksComponent{
         <div class="text-700 text-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam eligendi quos.</div>
         <button pButton pRipple label="Join Now" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"></button>
     </div>
-</div>`;
+</div>`
 
     block5: string = `
 <div class="bg-bluegray-900 text-gray-100 p-3 flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
@@ -214,7 +214,7 @@ export class BlocksComponent{
     <a pRipple class="flex align-items-center no-underline justify-content-center border-circle text-gray-50 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">
         <i class="pi pi-times"></i>
     </a>
-</div>`;
+</div>`
 
     block6: string = `
 <div class="surface-section px-4 py-5 md:px-6 lg:px-8">
@@ -252,7 +252,7 @@ export class BlocksComponent{
             <button pButton pRipple label="Save" icon="pi pi-check"></button>
         </div>
     </div>
-</div>`;
+</div>`
 
     block7: string = `
 <div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
@@ -318,7 +318,7 @@ export class BlocksComponent{
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
     block8: string = `
 <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
@@ -346,7 +346,7 @@ export class BlocksComponent{
 
         <button pButton pRipple label="Sign In" icon="pi pi-user" class="w-full"></button>
     </div>
-</div>`;
+</div>`
 
     block9: string = `
 <div class="surface-section">
@@ -395,13 +395,13 @@ export class BlocksComponent{
             </div>
         </li>
     </ul>
-</div>`;
+</div>`
 
     block10: string = `
 <div class="surface-card p-4 shadow-2 border-round">
     <div class="text-3xl font-medium text-900 mb-3">Card Title</div>
     <div class="font-medium text-500 mb-3">Vivamus id nisl interdum, blandit augue sit amet, eleifend mi.</div>
     <div style="height: 150px" class="border-2 border-dashed surface-border"></div>
-</div>`;
+</div>`
 
 }

@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
 @Injectable()
 export class EventService {
@@ -10,6 +10,6 @@ export class EventService {
         return this.http.get<any>('assets/demo/data/scheduleevents.json')
             .toPromise()
             .then(res => res.data as any[])
-            .then(data => data);
+            .then(data => data)
     }
 }

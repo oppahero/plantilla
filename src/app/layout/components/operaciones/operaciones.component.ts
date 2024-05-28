@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GlobalService } from 'src/app/services/global.service';
-import { MenuItem } from 'primeng/api';
-import { OperacionesService } from 'src/app/services/operaciones.service';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { GlobalService } from 'src/app/services/global.service'
+import { MenuItem } from 'primeng/api'
+import { OperacionesService } from 'src/app/services/operaciones.service'
 
 @Component({
   selector: 'app-operaciones',
@@ -9,7 +9,7 @@ import { OperacionesService } from 'src/app/services/operaciones.service';
   styleUrls: ['./operaciones.component.scss'],
 })
 export class OperacionesComponent implements OnInit, OnDestroy {
-  items: MenuItem[];
+  items: MenuItem[]
 
   constructor(
     private util: GlobalService,
@@ -18,16 +18,16 @@ export class OperacionesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.util.customMessage.subscribe((x) => {
-      this.items = x.items;
-    });
+      this.items = x.items
+    })
   }
 
   ngOnDestroy() {
-    this.items = [];
+    this.items = []
   }
 
   activeMenu($event) {
     // console.log('tengo:', $event.target.textContent);
-    this.operation.active($event.target.textContent);;
+    this.operation.active($event.target.textContent)
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { Component } from '@angular/core'
+import { CardModule } from 'primeng/card'
 
 @Component({
   selector: 'app-grey-pcard',

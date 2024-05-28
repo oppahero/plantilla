@@ -1,9 +1,9 @@
-import { OnInit } from '@angular/core';
-import { Component } from '@angular/core';
-import { LayoutService } from '../../service/app.layout.service';
-import { User } from 'src/app/models';
-import { MenuItem } from 'primeng/api';
-import { AuthService, GlobalService } from 'src/app/services';
+import { OnInit } from '@angular/core'
+import { Component } from '@angular/core'
+import { LayoutService } from '../../service/app.layout.service'
+import { User } from 'src/app/models'
+import { MenuItem } from 'primeng/api'
+import { AuthService, GlobalService } from 'src/app/services'
 // declare var $: any;
 
 @Component({
@@ -11,11 +11,11 @@ import { AuthService, GlobalService } from 'src/app/services';
   templateUrl: './app.menu.component.html',
 })
 export class AppMenuComponent implements OnInit {
-  model: any[] = [];
+  model: any[] = []
 
-  user: User;
-  items: MenuItem[];
-  asset: any;
+  user: User
+  items: MenuItem[]
+  asset: any
 
   groups = [
     { label: 'Inventario y Despacho' },
@@ -23,7 +23,7 @@ export class AppMenuComponent implements OnInit {
     { label: 'Producción' },
     { label: 'Inventario Proceso' },
     { label: 'Calidad' },
-  ];
+  ]
 
   constructor(
     public layoutService: LayoutService,
@@ -33,9 +33,9 @@ export class AppMenuComponent implements OnInit {
 
   ngOnInit() {
     // $('[data-widget="treeview"]').Treeview('init');
-    this.user = this.authService.user();
-    this.asset = this.util.urlAssets;
-    this.init();
+    this.user = this.authService.user()
+    this.asset = this.util.urlAssets
+    this.init()
 
 
     this.model = [
@@ -47,7 +47,7 @@ export class AppMenuComponent implements OnInit {
             icon: 'pi pi-fw pi-home',
             routerLink: ['apt/psd'],
             command: () => {
-              this.PSD();
+              this.PSD()
             },
           },
           {
@@ -77,7 +77,7 @@ export class AppMenuComponent implements OnInit {
                 // icon: 'pi pi-fw pi-sign-in',
                 routerLink: ['apt/psd'],
                 command: () => {
-                  this.PSD();
+                  this.PSD()
                 },
               },
               {
@@ -368,29 +368,29 @@ export class AppMenuComponent implements OnInit {
       //     },
       //   ],
       // },
-    ];
+    ]
   }
 
   breadcrum(i, sub): any {
     return {
       group: this.groups[i].label,
       subgroup: sub,
-    };
+    }
   }
 
   struct(i, sub): any {
     return {
       breadcrumb: this.breadcrum(i, sub),
       items: this.items,
-    };
+    }
   }
   
   init() {
-    this.items = [];
+    this.items = []
     this.util.newMessage({
       breadcrumb: null,
       items: this.items,
-    });
+    })
   }
 
 
@@ -526,8 +526,8 @@ export class AppMenuComponent implements OnInit {
           },
         ],
       },
-    ];
+    ]
 
-    this.util.newMessage(this.struct(0, 'Prog. y Seg. de Despacho'));
+    this.util.newMessage(this.struct(0, 'Prog. y Seg. de Despacho'))
   }
 }

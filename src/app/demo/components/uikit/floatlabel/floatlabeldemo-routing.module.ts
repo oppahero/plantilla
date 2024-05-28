@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FloatLabelDemoComponent } from './floatlabeldemo.component';
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { FloatLabelDemoComponent } from './floatlabeldemo.component'
 
 @NgModule({
 	imports: [RouterModule.forChild([

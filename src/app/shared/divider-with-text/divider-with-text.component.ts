@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'app-divider-with-text',
@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./divider-with-text.component.scss'],
 })
 export class DividerWithTextComponent {
-  @Input() text: any;
+  @Input() text: string
 }

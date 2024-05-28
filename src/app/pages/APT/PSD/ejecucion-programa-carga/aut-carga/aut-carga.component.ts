@@ -1,15 +1,17 @@
-import { ConfirmDialogComponent, ToastComponent } from 'src/app/shared';
-import { AuthService, GlobalService } from 'src/app/services';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { User } from 'src/app/models/user';
+import { ConfirmDialogComponent, ToastComponent } from 'src/app/shared'
+import { AuthService, GlobalService } from 'src/app/services'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
+import { DatePipe } from '@angular/common'
+import { User } from 'src/app/models/user'
 import {
   AutCargaLargosService,
   EjeProgramaCargaService,
   AutCargaLargosCanService,
   AutCargaLargosConfirService,
-} from 'src/app/services/apt';
+} from 'src/app/services/apt'
+import { MDWResponse } from 'src/app/models'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-aut-carga',
@@ -18,18 +20,18 @@ import {
   providers: [DatePipe],
 })
 export class AutCargaComponent implements OnInit {
-  user: User;
-  title: string;
-  cols: any[];
-  rows: any[];
-  loading: boolean;
-  results: any = { parametro: {}, tabla: [] };
-  selected: any;
-  displayHelp: boolean = false;
-  date: any;
+  user: User
+  title: string
+  cols: Column[]
+  rows: unknown[]
+  loading: boolean
+  results: MDWResponse = { parametro: {}, tabla: [] }
+  selected: any
+  displayHelp: boolean = false
+  date: Date
 
-  @ViewChild(ToastComponent) toast: ToastComponent;
-  @ViewChild(ConfirmDialogComponent) confirm: ConfirmDialogComponent;
+  @ViewChild(ToastComponent) toast: ToastComponent
+  @ViewChild(ConfirmDialogComponent) confirm: ConfirmDialogComponent
 
   constructor(
     private router: Router,
@@ -42,17 +44,17 @@ export class AutCargaComponent implements OnInit {
     private autCargaCanService: AutCargaLargosCanService,
     private autCargaConfirService: AutCargaLargosConfirService
   ) {
-    this.results.parametro.PAG = '';
-    this.title = 'Ejecución de Programa de Carga - Autorización Carga';
+    this.results.parametro.PAG = ''
+    this.title = 'Ejecución de Programa de Carga - Autorización Carga'
   }
 
-  ngOnInit(): void {
-    this.tab.activeAutCarga();
-    this.user = this.authService.user();
-    this.date = this.autCargaService.getDate();
-    this.results.parametro = this.autCargaService.getParams();
-    this.setCols();
-    this.consult();
+  ngOnInit() {
+    this.tab.activeAutCarga()
+    this.user = this.authService.user()
+    this.date = this.autCargaService.getDate()
+    this.results.parametro = this.autCargaService.getParams()
+    this.setCols()
+    this.consult()
   }
 
   setCols() {
@@ -77,65 +79,66 @@ export class AutCargaComponent implements OnInit {
       { field: 'CC_TRSP_MOVIL', header: 'Placa Móvil' },
       { field: 'CC_TRSP_CARGA', header: 'Placa Carga' },
       { field: 'MM_IND_ELAB', header: 'Origen' },
-    ];
+    ]
+
   }
 
-  filter(results): any {
-    return results['tabla'].filter((x) => x.NN_SECUEN_VIAJE != '');
+  filter(results): object[] {
+    return results['tabla'].filter((x) => x.NN_SECUEN_VIAJE != '')
   }
 
-  notification(aux, mssg) {
+  notification(aux: string, mssg: string) {
     switch (aux) {
       case 'FE':
-        this.toast.showError(mssg);
-        break;
+        this.toast.showError(mssg)
+        break
       case 'WA':
-        this.toast.showWarn(mssg);
-        break;
+        this.toast.showWarn(mssg)
+        break
       default:
-        this.toast.showSuccess(mssg);
-        break;
+        this.toast.showSuccess(mssg)
+        break
     }
   }
 
-  success(results) {
-    let aux = this.filter(results);
-    this.results.parametro = results.parametro;
-    this.rows = aux;
+  success(results: MDWResponse) {
+    const aux = this.filter(results)
+    this.results.parametro = results.parametro
+    this.rows = aux
     if (aux) {
-      this.selected = this.rows[0];
+      this.selected = this.rows[0]
     }
-    this.loading = false;
+    this.loading = false
     this.notification(
       results.parametro.W_TIPO_MENSA,
       results.parametro.W_MENSA
-    );
+    )
   }
 
   catchError(err) {
-    console.log(err);
-    this.loading = false;
-    this.toast.showError('Ha ocurrido un error.');
+    console.log(err)
+    this.loading = false
+    this.toast.showError('Ha ocurrido un error.')
   }
 
   getAll() {
-    this.loading = true;
+    this.loading = true
 
     this.autCargaService
       .getAll(this.results)
       .toPromise()
       .then((results) => {
-        this.success(results);
+        this.success(results)
       })
       .catch((err) => {
-        this.catchError(err);
-      });
+        this.catchError(err)
+      })
   }
 
   consult() {
-    this.selected = null;
-    let aux = { ...this.results.parametro };
-    let date = this.datePipe.transform(this.date, 'yyyyMMdd');
+    this.selected = null
+    const aux = { ...this.results.parametro }
+    const date = this.datePipe.transform(this.date, 'yyyyMMdd')
 
     this.results.parametro = {
       PAR_IDEN: this.user.username,
@@ -156,9 +159,9 @@ export class AutCargaComponent implements OnInit {
       W_PIRM_LIN_C_PROG: '',
       W_INI_CONSU_C_PROG: '',
       N_SECUEN_VIAJE: '',
-    };
+    }
 
-    this.getAll();
+    this.getAll()
   }
 
   /** */
@@ -168,20 +171,20 @@ export class AutCargaComponent implements OnInit {
       results.parametro.W_TIPO_MENSA == '' ||
       results.parametro.W_TIPO_MENSA == 'IN'
     )
-      this.consult();
+      this.consult()
   }
 
   success_cs(results) {
     this.notification(
       results.parametro.W_TIPO_MENSA,
       results.parametro.W_MENSA
-    );
+    )
 
-    this.loading = false;
-    this.refreshConsult(results);
+    this.loading = false
+    this.refreshConsult(results)
   }
 
-  params_cs(action, w_valida, nn_secuen): any {
+  params_cs(action: string, w_valida: string, nn_secuen) {
     return {
       parametro: {
         ACCION: action,
@@ -189,48 +192,48 @@ export class AutCargaComponent implements OnInit {
         NN_SECUEN_PROG: nn_secuen,
         PAR_IDEN: this.user.username,
       },
-    };
+    }
   }
 
   cancel() {
-    let params = this.params_cs('X', 'X', this.selected.NN_SECUEN_PROG);
-    this.loading = true;
+    const params = this.params_cs('X', 'X', this.selected.NN_SECUEN_PROG)
+    this.loading = true
 
     this.autCargaCanService
       .cancel(params)
       .toPromise()
       .then((results) => {
-        this.success_cs(results);
+        this.success_cs(results)
       })
       .catch((err) => {
-        this.catchError(err);
-      });
+        this.catchError(err)
+      })
   }
 
   confirmation() {
-    let params = this.params_cs('P', 'X', this.selected.NN_SECUEN_PROG);
-    this.loading = true;
+    const params = this.params_cs('P', 'X', this.selected.NN_SECUEN_PROG)
+    this.loading = true
 
     this.autCargaConfirService
       .confirm(params)
       .toPromise()
       .then((results) => {
-        this.success_cs(results);
+        this.success_cs(results)
       })
       .catch((err) => {
-        this.catchError(err);
-      });
+        this.catchError(err)
+      })
   }
 
   /** Navegación */
 
   nextPage() {
-    this.results.parametro.ACCION = 'S';
-    this.getAll();
+    this.results.parametro.ACCION = 'S'
+    this.getAll()
   }
 
   nextPageFlag(): boolean {
-    return this.results.parametro.W_C_MENSA == '010' ? false : true;
+    return this.results.parametro.W_C_MENSA == '010' ? false : true
   }
 
   // devFrente - confirmación
@@ -239,7 +242,7 @@ export class AutCargaComponent implements OnInit {
       this.selected &&
       this.selected.CC_EDO_PROG == '03'
       ? false
-      : true;
+      : true
   }
 
   // reordenar - cancelar
@@ -248,7 +251,7 @@ export class AutCargaComponent implements OnInit {
       this.selected &&
       this.selected.CC_EDO_PROG == '09'
       ? false
-      : true;
+      : true
   }
 
   reprintFlag(): boolean {
@@ -256,88 +259,88 @@ export class AutCargaComponent implements OnInit {
       this.selected &&
       this.selected.CC_EDO_PROG != '09'
       ? false
-      : true;
+      : true
   }
 
   detail() {
-    this.navigate('detalle', this.selected.NN_SECUEN_PROG);
+    this.navigate('detalle', this.selected.NN_SECUEN_PROG)
   }
 
   devFrent() {
-    this.navigate('devFrente', this.selected.NN_SECUEN_PROG);
+    this.navigate('devFrente', this.selected.NN_SECUEN_PROG)
   }
 
   tracking() {
-    this.navigate('seguimiento', this.selected.NN_SECUEN_PROG);
+    this.navigate('seguimiento', this.selected.NN_SECUEN_PROG)
   }
 
   rearrange() {
-    this.navigate('reordenar', this.results.parametro.C_EDO_PROG_MDW);
+    this.navigate('reordenar', this.results.parametro.C_EDO_PROG_MDW)
   }
 
   reprint() {
-    this.navigate('reimp', this.selected.NN_SECUEN_PROG);
+    this.navigate('reimp', this.selected.NN_SECUEN_PROG)
   }
 
   register() {
-    this.router.navigate(['alta'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['alta'], { relativeTo: this.activatedRoute })
   }
 
   externalCenterOffice() {
-    this.router.navigate(['despachoCExt'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['despachoCExt'], { relativeTo: this.activatedRoute })
   }
 
   saveParams() {
-    this.autCargaService.setParams(this.results.parametro);
-    this.autCargaService.setDate(this.date);
+    this.autCargaService.setParams(this.results.parametro)
+    this.autCargaService.setDate(this.date)
   }
 
-  navigate(route, value) {
-    this.saveParams();
+  navigate(route: string, value) {
+    this.saveParams()
     this.router.navigate([route, value], {
       relativeTo: this.activatedRoute,
-    });
+    })
   }
 
   /** Manejadores del dialog */
 
   displayChange(value: boolean) {
-    this.displayHelp = value;
+    this.displayHelp = value
   }
 
   selectedHelp(value) {
     this.results.parametro.C_EDO_PROG_MDW = this.util.fillWithCeros(
       value.NN_EDO_PROG,
       2
-    );
-    this.results.parametro.D_EDO_PROG = value.DD_EDO_PROG;
+    )
+    this.results.parametro.D_EDO_PROG = value.DD_EDO_PROG
   }
 
   selectedRow(value) {
-    this.selected = value;
+    this.selected = value
   }
 
   /** Confirms Dialog */
 
   confirmDialog() {
-    this.confirm.show('¿Está seguro que desea confirmar la carga?', 'confirm');
+    this.confirm.show('¿Está seguro que desea confirmar la carga?', 'confirm')
   }
 
   cancelDialog() {
     this.confirm.show(
       '¿Está seguro que desea cancelar la Autorización?',
       'cancel'
-    );
+    )
   }
 
-  confirmDialogAccept(key) {
+  confirmDialogAccept(key: string) {
     switch (key) {
       case 'confirm':
-        this.confirmation();
-        break;
+        this.confirmation()
+        break
       default:
-        this.cancel();
-        break;
+        this.cancel()
+        break
     }
   }
 }

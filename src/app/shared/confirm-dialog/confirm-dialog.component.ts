@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
-import { ConfirmDialogModule as ConfirmDialog } from 'primeng/confirmdialog';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core'
+import { ConfirmationService } from 'primeng/api'
+import { ConfirmDialogModule as ConfirmDialog } from 'primeng/confirmdialog'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -14,11 +14,11 @@ import { CommonModule } from '@angular/common';
   providers: [ConfirmationService],
 })
 export class ConfirmDialogComponent {
-  @Output() acceptEvent = new EventEmitter<any>();
+  @Output() acceptEvent = new EventEmitter<string>()
 
   constructor(private confirmationService: ConfirmationService) {}
 
-  show(mssg: any, key: any) {
+  show(mssg: string, key: string) {
     this.confirmationService.confirm({
       header: 'Confirmación',
       message: mssg,
@@ -26,8 +26,8 @@ export class ConfirmDialogComponent {
       acceptLabel: 'Si',
       rejectLabel: 'No',
       accept: () => {
-        this.acceptEvent.emit(key);
+        this.acceptEvent.emit(key)
       },
-    });
+    })
   }
 }

@@ -1,50 +1,50 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, debounceTime } from 'rxjs';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Subscription, debounceTime } from 'rxjs'
+import { LayoutService } from 'src/app/layout/service/app.layout.service'
 
 @Component({
     templateUrl: './chartsdemo.component.html'
 })
 export class ChartsDemoComponent implements OnInit, OnDestroy {
 
-    lineData: any;
+    lineData: any
 
-    barData: any;
+    barData: any
 
-    pieData: any;
+    pieData: any
 
-    polarData: any;
+    polarData: any
 
-    radarData: any;
+    radarData: any
 
-    lineOptions: any;
+    lineOptions: any
 
-    barOptions: any;
+    barOptions: any
 
-    pieOptions: any;
+    pieOptions: any
 
-    polarOptions: any;
+    polarOptions: any
 
-    radarOptions: any;
+    radarOptions: any
 
-    subscription: Subscription;
+    subscription: Subscription
     constructor(private layoutService: LayoutService) {
         this.subscription = this.layoutService.configUpdate$
             .pipe(debounceTime(25))
             .subscribe((config) => {
-                this.initCharts();
-            });
+                this.initCharts()
+            })
     }
 
     ngOnInit() {
-        this.initCharts();
+        this.initCharts()
     }
 
     initCharts() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        const documentStyle = getComputedStyle(document.documentElement)
+        const textColor = documentStyle.getPropertyValue('--text-color')
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary')
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border')
         
         this.barData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -62,7 +62,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     data: [28, 48, 40, 19, 86, 27, 90]
                 }
             ]
-        };
+        }
 
         this.barOptions = {
             plugins: {
@@ -95,7 +95,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     }
                 },
             }
-        };
+        }
 
         this.pieData = {
             labels: ['A', 'B', 'C'],
@@ -113,7 +113,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                         documentStyle.getPropertyValue('--teal-400')
                     ]
                 }]
-        };
+        }
 
         this.pieOptions = {
             plugins: {
@@ -124,7 +124,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     }
                 }
             }
-        };
+        }
 
         this.lineData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -146,7 +146,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     tension: .4
                 }
             ]
-        };
+        }
 
         this.lineOptions = {
             plugins: {
@@ -176,7 +176,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     }
                 },
             }
-        };
+        }
 
         this.polarData = {
             datasets: [{
@@ -200,7 +200,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                 'Teal',
                 'Orange'
             ]
-        };
+        }
 
         this.polarOptions = {
             plugins: {
@@ -217,7 +217,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     }
                 }
             }
-        };
+        }
 
         this.radarData = {
             labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
@@ -241,7 +241,7 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     data: [28, 48, 40, 19, 96, 27, 100]
                 }
             ]
-        };
+        }
 
         this.radarOptions = {
             plugins: {
@@ -258,12 +258,12 @@ export class ChartsDemoComponent implements OnInit, OnDestroy {
                     }
                 }
             }
-        };
+        }
     }
 
     ngOnDestroy() {
         if (this.subscription) {
-            this.subscription.unsubscribe();
+            this.subscription.unsubscribe()
         }
     }
     

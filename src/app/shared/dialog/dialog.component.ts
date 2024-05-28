@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { DialogModule } from 'primeng/dialog';
+import { CommonModule } from '@angular/common'
+import { Component, Input } from '@angular/core'
+import { DialogModule } from 'primeng/dialog'
 
 @Component({
   selector: 'app-dialog',
@@ -9,18 +9,18 @@ import { DialogModule } from 'primeng/dialog';
   imports: [CommonModule, DialogModule],
 })
 export class DialogComponent {
-  @Input() displayHelp: boolean;
-  @Input() draggable: boolean;
-  @Input() maximizable: boolean;
-  @Input() modal: boolean;
-  @Input() resizable: boolean;
-  @Input() closable: boolean;
-  @Input() height: any;
-  @Input() width: any;
-  @Input() header: any;
-  @Input() breakpoints: {};
+  @Input() displayHelp: boolean
+  @Input() draggable: boolean
+  @Input() maximizable: boolean
+  @Input() modal: boolean
+  @Input() resizable: boolean
+  @Input() closable: boolean
+  @Input() height: any
+  @Input() width: any
+  @Input() header: string
+  @Input() breakpoints: object
 
   constructor() {
-    this.width = '50vw';
+    this.width = '50vw'
   }
 }

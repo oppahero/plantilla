@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { Routes, RouterModule } from '@angular/router'
 
 //** PSD => ITEM PROGRAMACIÓN Y SEGUIMIENTO DE DESPACHO */
 
@@ -17,7 +17,7 @@ const routes: Routes = [
       },
     ],
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

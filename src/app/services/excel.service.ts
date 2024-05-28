@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import * as XLSX from 'xlsx';
+import { Injectable } from '@angular/core'
+import * as XLSX from 'xlsx'
 
 const EXCEL_TYPE =
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-const EXCEL_EXTENSION = '.xls';
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+const EXCEL_EXTENSION = '.xls'
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class ExcelService {
   exportAsExcelFile(data: any[], excelFileName: string): void {
     if(data.length)
       import('xlsx').then(xlsx => {
-        const worksheet = xlsx.utils.json_to_sheet(data);
-        this.wrapAndCenterCell(worksheet['A1']);
+        const worksheet = xlsx.utils.json_to_sheet(data)
+        this.wrapAndCenterCell(worksheet['A1'])
 
         // let rowIndex = 1;
         // for (rowIndex; rowIndex <= worksheet.rowCount; rowIndex++) {
@@ -33,33 +33,33 @@ export class ExcelService {
         //   };
         // }
 
-        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] }
         const excelBuffer: any = xlsx.write(workbook, {
           bookType: 'xls',
           type: 'array'
-        });
-        this.saveAsExcelFile(excelBuffer, excelFileName);
-      });
+        })
+        this.saveAsExcelFile(excelBuffer, excelFileName)
+      })
   }
 
   private wrapAndCenterCell(cell: XLSX.CellObject) {
-    const wrapAndCenterCellStyle = { alignment: { wrapText: true } };
-    this.setCellStyle(cell, wrapAndCenterCellStyle);
+    const wrapAndCenterCellStyle = { alignment: { wrapText: true } }
+    this.setCellStyle(cell, wrapAndCenterCellStyle)
   }
 
   private setCellStyle(cell: XLSX.CellObject, style: {}) {
-    cell.s = style;
+    cell.s = style
   }
 
   private saveAsExcelFile(buffer: any, fileName: string): void {
     import('file-saver').then(FileSaver => {
       const data: Blob = new Blob([buffer], {
         type: EXCEL_TYPE
-      });
+      })
       FileSaver.saveAs(
         data,
         fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
-      );
-    });
+      )
+    })
   }
 }

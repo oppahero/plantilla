@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { TimelineDemoComponent } from './timelinedemo.component';
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { TimelineDemoComponent } from './timelinedemo.component'
 
 @NgModule({
     imports: [RouterModule.forChild([

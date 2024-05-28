@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { InvalidStateDemoComponent } from './invalidstatedemo.component';
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { InvalidStateDemoComponent } from './invalidstatedemo.component'
 
 @NgModule({
 	imports: [RouterModule.forChild([

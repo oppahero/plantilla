@@ -8,8 +8,8 @@
   styleClass="p-datatable-sm"
   selectionMode="single"
   [(selection)]="selected"
-  (onRowSelect)="select($event)"
-  (onRowUnselect)="select($event)"
+  (onRowSelect)="select()"
+  (onRowUnselect)="select()"
   [paginator]="paginator"
   [rows]="num"
   #dt

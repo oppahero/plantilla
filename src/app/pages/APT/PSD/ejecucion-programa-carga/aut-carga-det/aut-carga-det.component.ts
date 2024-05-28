@@ -1,10 +1,12 @@
-import { AutCargaLargosDetService } from 'src/app/services/apt';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService, GlobalService } from 'src/app/services';
-import { ActivatedRoute } from '@angular/router';
-import { ToastComponent } from 'src/app/shared';
-import { Location } from '@angular/common';
-import { User } from 'src/app/models/user';
+import { AutCargaLargosDetService } from 'src/app/services/apt'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { AuthService, GlobalService } from 'src/app/services'
+import { ActivatedRoute } from '@angular/router'
+import { ToastComponent } from 'src/app/shared'
+import { Location } from '@angular/common'
+import { User } from 'src/app/models/user'
+import { MDWResponse } from 'src/app/models'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-aut-carga-det',
@@ -12,14 +14,14 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./aut-carga-det.component.scss'],
 })
 export class AutCargaDetComponent implements OnInit {
-  user: User;
-  title: string;
-  cols: any[];
-  rows: any[];
-  loading: boolean;
-  results: any = { parametro: {}, tabla: [] };
+  user: User
+  title: string
+  cols: Column[]
+  rows: any[]
+  loading: boolean
+  results: MDWResponse = { parametro: {}, tabla: [] }
 
-  @ViewChild(ToastComponent) toast: ToastComponent;
+  @ViewChild(ToastComponent) toast: ToastComponent
 
   constructor(
     private location: Location,
@@ -28,18 +30,18 @@ export class AutCargaDetComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private autCargaDetService: AutCargaLargosDetService
   ) {
-    this.results.parametro.PAG = '';
-    this.title = 'Autorización Carga - Detalle';
+    this.results.parametro.PAG = ''
+    this.title = 'Autorización Carga - Detalle'
   }
 
   ngOnInit(): void {
-    this.user = this.authService.user();
-    this.results.parametro.PAR_IDEN = this.user.username;
+    this.user = this.authService.user()
+    this.results.parametro.PAR_IDEN = this.user.username
 
     this.results.parametro.N_SECUEN_PROG =
-      this.activatedRoute.snapshot.params['autCarga'];
-    this.setCols();
-    this.consult();
+      this.activatedRoute.snapshot.params['autCarga']
+    this.setCols()
+    this.consult()
   }
 
   setCols() {
@@ -64,59 +66,59 @@ export class AutCargaDetComponent implements OnInit {
       { field: 'QQ_LONG', header: 'Longitud' },
       { field: 'QQ_DIAM_PLG', header: 'Diámetro (plg)' },
       { field: 'QQ_CARGA', header: 'Peso Progdo. (kg)' },
-    ];
+    ]
   }
 
   filter(results) {
-    return results['tabla'].filter((x) => x.CC_ORDEN_ENTREGA_MDW != '');
+    return results['tabla'].filter((x) => x.CC_ORDEN_ENTREGA_MDW != '')
   }
 
   notification(aux: string, mssg: string) {
     switch (aux) {
       case 'FE':
-        this.toast.showError(mssg);
-        break;
+        this.toast.showError(mssg)
+        break
       case 'WA':
-        this.toast.showWarn(mssg);
-        break;
+        this.toast.showWarn(mssg)
+        break
       default:
-        this.toast.showSuccess(mssg);
-        break;
+        this.toast.showSuccess(mssg)
+        break
     }
   }
 
   success(results) {
-    let aux = this.filter(results);
-    this.results.parametro = results['parametro'];
-    this.rows = aux;
+    const aux = this.filter(results)
+    this.results.parametro = results['parametro']
+    this.rows = aux
     this.notification(
       results.parametro.W_TIPO_MENSA,
       results.parametro.W_MENSA
-    );
+    )
   }
 
   catchError(err) {
-    console.log(err);
-    this.toast.showError('Ha ocurrido un error.');
+    console.log(err)
+    this.toast.showError('Ha ocurrido un error.')
   }
 
   get() {
-    this.loading = true;
+    this.loading = true
 
     this.autCargaDetService
       .getAll(this.results)
       .toPromise()
       .then((results) => {
-        this.success(results);
+        this.success(results)
       })
       .catch((err) => {
-        this.catchError(err);
+        this.catchError(err)
       })
-      .finally(() => (this.loading = false));
+      .finally(() => (this.loading = false))
   }
 
   consult() {
-    let aux = { ...this.results.parametro };
+    const aux = { ...this.results.parametro }
 
     this.results.parametro = {
       PAR_IDEN: this.user.username,
@@ -127,20 +129,20 @@ export class AutCargaDetComponent implements OnInit {
       W_PRIM_LIN: '',
       W_CLAVE: '',
       PAG: '',
-    };
+    }
 
-    this.get();
+    this.get()
   }
 
   nextPage() {
-    this.get();
+    this.get()
   }
 
   nextPageFlag(): boolean {
-    return this.results.parametro.W_C_MENSA == '010' ? false : true;
+    return this.results.parametro.W_C_MENSA == '010' ? false : true
   }
 
   back() {
-    this.location.back();
+    this.location.back()
   }
 }

@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-import { PSDRouting } from './psd-routing.module';
+import { PSDRouting } from './psd-routing.module'
 
 @NgModule({
   declarations: [],

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { Component, OnInit } from '@angular/core'
+import { MegaMenuItem, MenuItem } from 'primeng/api'
 
 @Component({
     templateUrl: './menus.component.html',
@@ -11,27 +11,27 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 })
 export class MenusComponent implements OnInit {
 
-    breadcrumbItems: MenuItem[] = [];
+    breadcrumbItems: MenuItem[] = []
 
-    tieredItems: MenuItem[] = [];
+    tieredItems: MenuItem[] = []
 
-    items: MenuItem[] = [];
+    items: MenuItem[] = []
 
-    routeItems: MenuItem[] = [];
+    routeItems: MenuItem[] = []
 
-    megaMenuItems: MegaMenuItem[] = [];
+    megaMenuItems: MegaMenuItem[] = []
 
-    panelMenuItems: MenuItem[] = [];
+    panelMenuItems: MenuItem[] = []
 
-    stepsItems: MenuItem[] = [];
+    stepsItems: MenuItem[] = []
 
-    slideItems: MenuItem[] = [];
+    slideItems: MenuItem[] = []
 
-    menuItems: MenuItem[] = [];
+    menuItems: MenuItem[] = []
 
-    plainMenuItems: MenuItem[] = [];
+    plainMenuItems: MenuItem[] = []
 
-    pageIndex: number = 0;
+    pageIndex: number = 0
 
     ngOnInit() {
         this.tieredItems = [
@@ -114,7 +114,7 @@ export class MenusComponent implements OnInit {
                 label: 'Quit',
                 icon: 'pi pi-fw pi-sign-out'
             }
-        ];
+        ]
 
         this.items = [
             {
@@ -163,7 +163,7 @@ export class MenusComponent implements OnInit {
                     }
                 ]
             }
-        ];
+        ]
 
         this.menuItems = [
             {
@@ -181,7 +181,7 @@ export class MenusComponent implements OnInit {
             {
                 label: 'Home', icon: 'pi pi-fw pi-home'
             },
-        ];
+        ]
 
         this.slideItems = [
             {
@@ -247,7 +247,7 @@ export class MenusComponent implements OnInit {
                     }
                 ]
             }
-        ];
+        ]
 
         this.plainMenuItems = [
             {
@@ -277,22 +277,22 @@ export class MenusComponent implements OnInit {
 
                 ]
             }
-        ];
+        ]
 
-        this.breadcrumbItems = [];
-        this.breadcrumbItems.push({ label: 'Electronics' });
-        this.breadcrumbItems.push({ label: 'Computer' });
-        this.breadcrumbItems.push({ label: 'Notebook' });
-        this.breadcrumbItems.push({ label: 'Accessories' });
-        this.breadcrumbItems.push({ label: 'Backpacks' });
-        this.breadcrumbItems.push({ label: 'Item' });
+        this.breadcrumbItems = []
+        this.breadcrumbItems.push({ label: 'Electronics' })
+        this.breadcrumbItems.push({ label: 'Computer' })
+        this.breadcrumbItems.push({ label: 'Notebook' })
+        this.breadcrumbItems.push({ label: 'Accessories' })
+        this.breadcrumbItems.push({ label: 'Backpacks' })
+        this.breadcrumbItems.push({ label: 'Item' })
 
         this.routeItems = [
             { label: 'Personal', routerLink: 'personal' },
             { label: 'Seat', routerLink: 'seat' },
             { label: 'Payment', routerLink: 'payment' },
             { label: 'Confirmation', routerLink: 'confirmation' },
-        ];
+        ]
 
         this.megaMenuItems = [
             {
@@ -397,7 +397,7 @@ export class MenusComponent implements OnInit {
                     ]
                 ]
             },
-        ];
+        ]
 
         this.panelMenuItems = [
             {
@@ -470,7 +470,7 @@ export class MenusComponent implements OnInit {
                     }
                 ]
             }
-        ];
+        ]
     }
 
 }
