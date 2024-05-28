@@ -1,0 +1,40 @@
+<app-ayuda
+  [helpTitle]="'Estados de Programa'"
+  [displayHelp]="displayHelp"
+  [cols]="cols"
+  [rows]="rows"
+  [selected]="selected"
+  [pag]="results.parametro.PAG"
+  [loading]="loading"
+  [W_PROG]="results.parametro.W_PROG"
+  [nextFlag]="true"
+  [previousFlag]="true"
+  [W_C_MENSA]="results.parametro.W_C_MENSA"
+  [params]="results.parametro"
+  (displayEvent)="close()"
+  (selectEvent)="select($event)"
+  (previousPageEvent)="previousPage()"
+  (nextPageEvent)="nextPage()"
+>
+  <div class="p-fluid p-formgrid p-grid" inputs>
+    <div class="p-field p-col-9">
+      <label>Desc. Abrev. Edo. Prog.</label>
+      <input
+        [(ngModel)]="results.parametro.D_EDO_PROG"
+        type="text"
+        pInputText
+      />
+    </div>
+    <div class="p-field p-col">
+      <label style="color: white">-</label>
+      <button pButton pRipple label="Consultar" (click)="consult()"></button>
+    </div>
+  </div>
+  <app-transaction-info
+    [W_PROG]="results.parametro.W_PROG"
+    [W_COMANDO]="results.parametro.PAR_COMANDO"
+    [W_IDEN]="results.parametro.PAR_IDEN"
+    [W_TIPO_MENSA]="results.parametro.W_TIPO_MENSA"
+    [W_MENSA]="results.parametro.W_MENSA"
+  ></app-transaction-info>
+</app-ayuda>

@@ -6,7 +6,7 @@ import { AutCargaComponent } from './aut-carga/aut-carga.component'
 import { EjecProgCargaLargoRouting } from './ejecucion-programa-carga-routing.module'
 import { SharedModule } from '../../../../shared/shared.module'
 import { AutCargaDetComponent } from './aut-carga-det/aut-carga-det.component'
-// import { HelpsAptModule } from '../../../../helps/APT/helps-apt.module';
+import { HelpsAptModule } from '../../../../helps/APT/helps-apt.module'
 import { AccordionModule } from 'primeng/accordion'
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { AccordionModule } from 'primeng/accordion'
     CommonModule,
     EjecProgCargaLargoRouting,
     SharedModule,
-    // HelpsAptModule,
+    HelpsAptModule,
     AccordionModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

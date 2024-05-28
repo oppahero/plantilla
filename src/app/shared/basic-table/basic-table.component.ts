@@ -39,10 +39,10 @@ export class BasicTableComponent implements OnInit {
 
   filter: boolean
   first: number = 0
-  rows_: []
+  rows_: any[]
 
   @Input()
-  set rows(val: []) {
+  set rows(val: any[]) {
     this.rows_ = val
     this.first = 0
   }

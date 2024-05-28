@@ -23,7 +23,7 @@ export class AutCargaComponent implements OnInit {
   user!: User
   title!: string
   cols!: Column[]
-  rows!: unknown[]
+  rows!: any[]
   loading: boolean
   results: MDWResponse = { parametro: {}, tabla: [] }
   displayHelp: boolean = false

@@ -146,7 +146,7 @@ export * from './eje-programa-carga.service'
 // export * from './ayuda-cliente.service';
 // export * from './ayuda-conductor.service';
 // export * from './ayuda-edo-orden.service';
-// export * from './ayuda-edo-programa.service';
+export * from './ayuda-edo-programa.service'
 // export * from './ayuda-embarque.service';
 // export * from './ayuda-evento.service';
 // export * from './ayuda-fila.service';
