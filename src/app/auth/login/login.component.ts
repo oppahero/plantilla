@@ -5,6 +5,13 @@ import { Message } from 'primeng/api';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { User } from 'src/app/models';
 import { AuthService, LdapService, UserService } from 'src/app/services';
+import { FullScreenService } from '../fullScreen.service';
+
+
+
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -35,7 +42,8 @@ export class LoginComponent implements OnInit {
     private ldapService: LdapService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private fullScreenService: FullScreenService,
   ) {}
 
   ngOnInit() {
@@ -54,7 +62,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  login() {
+  login() {   
     const formData = this.loginForm.getRawValue();
 
     this.ldapService.login(formData).subscribe({
@@ -86,6 +94,7 @@ export class LoginComponent implements OnInit {
   }
 
   success() {
+    this.fullScreenService.setFullScreen(true);
     this.authService.setSessionStorage('userOPENSIPCA', this.user);
     this.router.navigate(['']);
   }
