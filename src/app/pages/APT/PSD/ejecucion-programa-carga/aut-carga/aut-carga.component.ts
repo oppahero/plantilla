@@ -141,7 +141,7 @@ export class AutCargaComponent implements OnInit {
     const date = this.datePipe.transform(this.date, 'yyyyMMdd')
 
     this.results.parametro = {
-      PAR_IDEN: this.user.username,
+      PAR_IDEN: this.user?.username,
       C_GRP_ALM: this.util.validate(aux.C_GRP_ALM),
       N_PROG_DESP: this.util.validate(aux.N_PROG_DESP),
       F_CARGA: this.util.validate(date),
@@ -161,6 +161,7 @@ export class AutCargaComponent implements OnInit {
       N_SECUEN_VIAJE: '',
     }
 
+    console.log(this.results)
     this.getAll()
   }
 

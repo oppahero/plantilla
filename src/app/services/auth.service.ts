@@ -31,7 +31,9 @@ export class AuthService {
 
   getSessionStorage(key: string) {
     const user = this.storageService.secureStorage.getItem(key)
-    user.username = user.username.toUpperCase()
+    if (user) {
+      user.username = user.username.toUpperCase()
+    }
     return user
   }
 

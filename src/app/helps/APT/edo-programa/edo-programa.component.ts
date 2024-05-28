@@ -64,7 +64,7 @@ export class EdoProgramaComponent implements OnInit {
     const aux = { ...this.results.parametro }
 
     this.results.parametro = {
-      PAR_IDEN: this.user.username,
+      PAR_IDEN: this.user?.username,
       D_EDO_PROG: this.util.validate(aux.D_EDO_PROG),
       ACCION: 'C',
       W_ISN_S: '',

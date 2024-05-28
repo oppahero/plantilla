@@ -28,10 +28,10 @@
             padding-bottom: 0.3rem;
         }
 
-        Para el botón de consulta añadir: 
+        Para el botón de consulta añadir:
             style="width: auto"
             class= flex-align-end
-            
+
 
     En los p-toolbar
         -Usar las secciones
@@ -43,6 +43,7 @@
     En el TS los array COLS son de tipo   cols: Column[]
         import { Column } from 'src/app/models/primeng'
 
+    Los inputs con FillWithCero ahora se esta usando el ngModel
 
 
 #Propiedades En los componente de PrimeNG
@@ -67,3 +68,7 @@
 
 
     Notas: Hay tablas que no requieren titulo
+
+
+ [value]="results.parametro.N_PROG_DESP"
+            (input)="results.parametro.N_PROG_DESP = $event.target.value"

@@ -36,7 +36,7 @@
           class="p-button-success p-ml-auto"
           pTooltip="Exportar excel"
           tooltipPosition="right"
-          [tooltipZIndex]="90000"
+          tooltipZIndex="90000"
         ></button>
         <button
           *ngIf="filters"
@@ -67,10 +67,10 @@
     </tr>
     <tr *ngIf="filter">
       <th *ngFor="let col of columns">
+        <!-- (input)="dt.filter($event.target.value, col.field, 'startsWith')" -->
         <input
           pInputText
           type="text"
-          (input)="dt.filter($event.target.value, col.field, 'startsWith')"
           placeholder="Buscar por {{ col.header }}"
           class="p-column-filter"
           appendTo="body"

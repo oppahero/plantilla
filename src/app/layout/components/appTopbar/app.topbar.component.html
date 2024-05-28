@@ -43,13 +43,13 @@
     /> -->
 
     <p-avatar
-      [image]="util.getUrlPhoto(user.dni)"
+      [image]="util.getUrlPhoto(user?.dni)"
       shape="circle"
       onImageError="assets/dist/img/user.png"
       styleClass="mr-2"
     />
 
-    <span> SIDORVE\{{ user.username }}</span>
+    <span> SIDORVE\{{ user?.username }}</span>
 
     <button
       class="p-link layout-topbar-button"

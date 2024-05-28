@@ -2,9 +2,7 @@
   <div class="col-12">
     <div class="card card--operation">
       <div class="p-fluid p-formgrid grid">
-        <div
-          class="field col-12  lg:col-2 md:col-3 sm:col-6 field--operation"
-        >
+        <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
           <label htmlFor="D_NOMBRE_CIA_ABREV">Sociedad</label>
           <input
             pInputText
@@ -31,16 +29,13 @@
             />
           </p-inputGroup>
         </div>
-        <div
-          class="field col-12  lg:col-2 md:col-3 sm:col-6 field--operation"
-        >
+        <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
           <label htmlFor="N_PROG_DESP">Programa</label>
           <input
             id="N_PROG_DESP"
             pInputText
             [FillWithCero]="10"
-            [value]="results.parametro.N_PROG_DESP"
-            (input)="results.parametro.N_PROG_DESP = $event.target.value"
+            [(ngModel)]="results.parametro.N_PROG_DESP"
           />
         </div>
         <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
@@ -66,8 +61,7 @@
             id="N_SECUEN_PROG_MDW"
             pInputText
             [FillWithCero]="10"
-            [value]="results.parametro.N_SECUEN_PROG_MDW"
-            (input)="results.parametro.N_SECUEN_PROG_MDW = $event.target.value"
+            [(ngModel)]="results.parametro.N_SECUEN_PROG_MDW"
           />
         </div>
         <div class="field col-12 md:col-7 field--operation">
@@ -77,8 +71,7 @@
               style="width: 10%"
               pInputText
               [FillWithCero]="2"
-              [value]="results.parametro.C_EDO_PROG_MDW"
-              (input)="results.parametro.C_EDO_PROG_MDW = $event.target.value"
+              [(ngModel)]="results.parametro.C_EDO_PROG_MDW"
             />
             <input
               [(ngModel)]="results.parametro.D_EDO_PROG"

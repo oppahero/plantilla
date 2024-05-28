@@ -10,7 +10,7 @@ import { User } from 'src/app/models'
 })
 export class AppTopBarComponent {
   items!: MenuItem[]
-  user: User
+  user!: User
 
   @ViewChild('menubutton') menuButton!: ElementRef
 
@@ -23,6 +23,6 @@ export class AppTopBarComponent {
     public util: GlobalService,
     private authService: AuthService
   ) {
-    this.user = this.authService.user()
+    this.user =  this.authService.user()
   }
 }
