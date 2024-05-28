@@ -20,15 +20,15 @@ import { Column } from 'src/app/models/primeng'
   providers: [DatePipe],
 })
 export class AutCargaComponent implements OnInit {
-  user: User
-  title: string
-  cols: Column[]
-  rows: unknown[]
+  user!: User
+  title!: string
+  cols!: Column[]
+  rows!: unknown[]
   loading: boolean
   results: MDWResponse = { parametro: {}, tabla: [] }
-  selected: any
   displayHelp: boolean = false
-  date: Date
+  selected!: any
+  date!: Date
 
   @ViewChild(ToastComponent) toast: ToastComponent
   @ViewChild(ConfirmDialogComponent) confirm: ConfirmDialogComponent
