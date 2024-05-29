@@ -82,3 +82,10 @@ https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fapp.component.ts
 
 FALTA SOLVENTAR
 <!-- (input)="dt.filter($event.target.value, col.field, 'startsWith')" -->
+
+b52822 primary
+b527225b
+
+f5322b5b sombra no usada
+
+boton hover #f54242
