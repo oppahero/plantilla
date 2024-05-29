@@ -24,6 +24,7 @@ export class AyudaComponent {
   @Input() W_SALGO: any
   @Input() params: any //no tiene uso
   @Input() W_MENSA: any
+  @Input() breakpoints: object
 
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()
@@ -34,7 +35,7 @@ export class AyudaComponent {
   constructor() {
     this.paginator = false
   }
- 
+
 
   previousPageFlag(): boolean {
     return this.pag > '001' ? false : true

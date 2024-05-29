@@ -6,6 +6,7 @@
 #En los componentes genericos que tenemos
     -Se modifico la sección de summary para usar las nuevas propiedades de flex
     -Se modifico el transactionInfo para usar propiedades flex
+    -Al componente dialog se le añadio la propiedad breakpoints, al igual que a la ayuda, y ayuda-edo-programa
 
 
 #En las operaciones
@@ -72,3 +73,8 @@
 
  [value]="results.parametro.N_PROG_DESP"
             (input)="results.parametro.N_PROG_DESP = $event.target.value"
+
+
+
+https://ej2.syncfusion.com/angular/documentation/tab/how-to/adding-dynamic-items-with-content-reuse?cs-save-lang=1&cs-lang=ts
+https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fapp.component.ts
