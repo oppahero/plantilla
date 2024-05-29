@@ -10,6 +10,14 @@ import { CardModule } from 'primeng/card'
       <ng-content></ng-content>
     </p-card>
   `,
-  styleUrls: ['./grey-pcard.component.scss'],
+  styles: `
+  :host ::ng-deep .grey-pcard.p-card{
+    .p-card-body{
+        background: #f4f4f4;
+        border: 1px solid #c8c8c8;
+        border-radius: 3px;
+    }
+}
+  `,
 })
 export class GreyPcardComponent {}

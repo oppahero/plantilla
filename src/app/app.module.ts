@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import {
   DatePipe,
-  // HashLocationStrategy,
+  HashLocationStrategy,
   LocationStrategy,
-  PathLocationStrategy,
+  // PathLocationStrategy,
 } from '@angular/common'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
@@ -30,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   ],
   providers: [
     DatePipe,
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     CountryService,
     CustomerService,
     EventService,

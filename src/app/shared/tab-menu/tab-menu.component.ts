@@ -11,6 +11,6 @@ import { TabMenuModule } from 'primeng/tabmenu'
   `,
 })
 export class TabMenuComponent {
-  @Input() items: MenuItem[]
-  @Input() activeItem: MenuItem
+  @Input() items!: MenuItem[]
+  @Input() activeItem!: MenuItem
 }

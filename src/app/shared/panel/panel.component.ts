@@ -13,6 +13,6 @@ import { PanelModule } from 'primeng/panel'
   `,
 })
 export class PanelComponent {
-  @Input() header: string
-  @Input() toogle: boolean
+  @Input() header!: string
+  @Input() toogle!: boolean
 }

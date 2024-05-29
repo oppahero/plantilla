@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { Output, EventEmitter } from '@angular/core'
 import { User } from 'src/app/models/user'
+import { MDWResponse } from 'src/app/models'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-edo-programa',
@@ -11,16 +13,16 @@ import { User } from 'src/app/models/user'
   styleUrls: ['./edo-programa.component.scss'],
 })
 export class EdoProgramaComponent implements OnInit {
-  @Input() displayHelp: boolean
+  @Input() displayHelp!: boolean
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()
 
-  user: User
-  rows: any[]
-  cols: any[]
-  loading: boolean
-  results: any = { parametro: {}, tabla: [] }
-  selected: any
+  user!: User
+  cols!: Column[]
+  rows!: any[]
+  loading!: boolean
+  results: MDWResponse = { parametro: {}, tabla: [] }
+  selected!: any
 
   constructor(
     private util: GlobalService,
@@ -28,7 +30,7 @@ export class EdoProgramaComponent implements OnInit {
     private edoProgramaService: AyudaEdoProgramaService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.cols = [
       { field: 'NN_EDO_PROG', header: 'Cód. Edo. Prog' },
       { field: 'DD_EDO_PROG_REDUCI', header: 'Desc. Abrev. Edo. Prog.' },
@@ -38,26 +40,21 @@ export class EdoProgramaComponent implements OnInit {
     this.consult()
   }
 
-  filter(results: any): any {
-    return results['tabla'].filter((x) => x.NN_EDO_PROG != '')
+  filter(response: any): object[] {
+    return response['tabla'].filter((x) => x.NN_EDO_PROG != '')
   }
 
   getAll() {
     this.loading = true
 
-    this.edoProgramaService
-      .getAll(this.results)
-      .toPromise()
-      .then((results) => {
-        const aux = this.filter(results)
-        this.results.parametro = results.parametro
-        this.rows = aux
-        this.loading = false
-      })
-      .catch((err) => {
-        console.log(err)
-        this.loading = false
-      })
+    this.edoProgramaService.getAll(this.results).subscribe({
+      next: (response) => {
+        this.results.parametro = response.parametro
+        this.rows = this.filter(response)
+      },
+      error: (err) => console.log(err),
+      complete: () => (this.loading = false),
+    })
   }
 
   consult() {

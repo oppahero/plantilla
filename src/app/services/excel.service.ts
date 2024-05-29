@@ -47,7 +47,8 @@ export class ExcelService {
     this.setCellStyle(cell, wrapAndCenterCellStyle)
   }
 
-  private setCellStyle(cell: XLSX.CellObject, style: {}) {
+  // object antes {}
+  private setCellStyle(cell: XLSX.CellObject, style: object) {
     cell.s = style
   }
 

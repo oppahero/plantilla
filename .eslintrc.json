@@ -12,6 +12,9 @@
       ],
       "rules": {
         "semi": ["error", "never"],
+        "no-trailing-spaces": ["error"],
+        "eol-last": ["error", "always"],
+        "space-before-function-paren": ["error", "never"],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -28,15 +31,20 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/space-before-blocks": ["error", "always"],
+        "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }]
       }
     },
     {
       "files": ["*.html"],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
-        // "plugin:@angular-eslint/template/accessibility"
-      ]
+        // ,"plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "@angular-eslint/template/elements-content": "off"
+      }
     }
   ]
 }

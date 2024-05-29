@@ -17,7 +17,7 @@ export class AutCargaLargosService {
     this.url = environment.apiUrl + 'ejec-prog-cargas-largos'
   }
 
-  getAll(data: any) : Observable<any>{
+  getAll(data: any): Observable<any> {
     return this.http.post<any>(this.url, data).pipe(
       tap((result) => {
         this.formatCols(result.tabla)
@@ -29,7 +29,6 @@ export class AutCargaLargosService {
     return aux.map((p) => {
       if (p.QQ_CARGA_PROG) p['QQ_CARGA_PROG'] = parseInt(p.QQ_CARGA_PROG)
       if (p.QQ_CARGA_DESP) p['QQ_CARGA_DESP'] = parseInt(p.QQ_CARGA_DESP)
-
       return p
     })
   }

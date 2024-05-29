@@ -61,6 +61,7 @@ export class GlobalService {
   }
 
   private message = new BehaviorSubject<any>([])
+
   public customMessage = this.message.asObservable()
 
   constructor(private datePipe: DatePipe) {
@@ -92,12 +93,12 @@ export class GlobalService {
   }
 
   /**
-   * 
-   * @param array: array que queremos copiar 
+   *
+   * @param array: array que queremos copiar
    * @returns Nuevo array
    */
 
-  cloneArray(array){
+  cloneArray(array) {
     return array.map((element) => {
       if (typeof element === 'object')
         return JSON.parse(JSON.stringify(element))

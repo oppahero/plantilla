@@ -5,7 +5,7 @@
   [value]="rows_"
   [resizableColumns]="resizable"
   columnResizeMode="expand"
-  styleClass="p-datatable-sm"
+  styleClass="p-datatable-sm p-datatable-gridlines"
   selectionMode="single"
   [(selection)]="selected"
   (onRowSelect)="select()"
@@ -14,6 +14,8 @@
   [rows]="num"
   #dt
   [(first)]="first"
+  [scrollable]="scrollable" 
+  [scrollHeight]="scrollHeight" 
 >
   <ng-template pTemplate="caption" *ngIf="title || excel || filters">
     <div class="p-d-flex p-ai-center p-jc-between">
@@ -95,8 +97,8 @@
     <div class="flex justify-content-between flex-wrap">
       <!-- w-10rem -->
       <div class="flex align-items-center h-2rem m-2">
-        <label class="mr-2">Página:</label>
-        <input readonly [(ngModel)]="pag" style="width: 50px" pInputText />
+        <label htmlFor="PAG" class="mr-2">Página:</label>
+        <input id="PAG" readonly [(ngModel)]="pag" style="width: 50px" pInputText />
       </div>
       <div class="flex align-items-center h-2rem m-2">
         <ng-content></ng-content>

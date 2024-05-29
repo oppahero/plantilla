@@ -9,16 +9,16 @@ import { DialogModule } from 'primeng/dialog'
   imports: [CommonModule, DialogModule],
 })
 export class DialogComponent {
-  @Input() displayHelp: boolean
-  @Input() draggable: boolean
-  @Input() maximizable: boolean
-  @Input() modal: boolean
-  @Input() resizable: boolean
-  @Input() closable: boolean
-  @Input() height: any
-  @Input() width: any
+  @Input() displayHelp!: boolean
+  @Input() draggable!: boolean
+  @Input() maximizable!: boolean
+  @Input() modal!: boolean
+  @Input() resizable!: boolean
+  @Input() closable!: boolean
+  @Input() height!: string
+  @Input() width!: string
   @Input() header: string
-  @Input() breakpoints: object
+  @Input() breakpoints!: object
 
   constructor() {
     this.width = '50vw'

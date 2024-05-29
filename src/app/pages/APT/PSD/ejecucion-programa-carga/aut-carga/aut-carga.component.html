@@ -3,34 +3,35 @@
     <div class="card card--operation">
       <div class="p-fluid p-formgrid grid">
         <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
-          <label htmlFor="D_NOMBRE_CIA_ABREV">Sociedad</label>
+          <label for="D_NOMBRE_CIA_ABREV">Sociedad</label>
           <input
             pInputText
-            id="D_NOMBRE_CIA_ABREV"
-            type="text"
             [(ngModel)]="results.parametro.D_NOMBRE_CIA_ABREV"
+            id="D_NOMBRE_CIA_ABREV"
             disabled
           />
         </div>
         <div class="field col-12 lg:col-2 md:col-3 field--operation">
-          <label htmlFor="lastname2">Centro</label>
+          <label for="C_GRP_ALM">Centro</label>
           <p-inputGroup>
             <input
               pInputText
-              style="width: 50%"
               [(ngModel)]="results.parametro.C_GRP_ALM"
+              style="width: 50%"
+              id="C_GRP_ALM"
               disabled
             />
             <input
               pInputText
-              style="width: 50%"
               [(ngModel)]="results.parametro.D_GRP_ALM"
+              style="width: 50%"
+              id="D_GRP_ALM"
               disabled
             />
           </p-inputGroup>
         </div>
         <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
-          <label htmlFor="N_PROG_DESP">Programa</label>
+          <label for="N_PROG_DESP">Programa</label>
           <input
             id="N_PROG_DESP"
             pInputText
@@ -39,7 +40,7 @@
           />
         </div>
         <div class="field col-12 lg:col-2 md:col-3 sm:col-6 field--operation">
-          <label htmlFor="F_CARGA">Fecha</label>
+          <label for="F_CARGA">Fecha</label>
           <p-calendar
             id="F_CARGA"
             [(ngModel)]="date"
@@ -56,7 +57,7 @@
           </p-calendar>
         </div>
         <div class="field col-12 lg:col-2 md:col-3 field--operation">
-          <label htmlFor="N_SECUEN_PROG_MDW">Aut. Carga</label>
+          <label for="N_SECUEN_PROG_MDW">Aut. Carga</label>
           <input
             id="N_SECUEN_PROG_MDW"
             pInputText
@@ -65,9 +66,10 @@
           />
         </div>
         <div class="field col-12 md:col-7 field--operation">
-          <label>Edo Autorización</label>
+          <label for="C_EDO_PROG_MDW">Edo Autorización</label>
           <p-inputGroup>
             <input
+              id="C_EDO_PROG_MDW"
               style="width: 10%"
               pInputText
               [FillWithCero]="2"

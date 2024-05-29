@@ -8,7 +8,6 @@ import { Response } from '../models'
   providedIn: 'root'
 })
 export class LdapService {
-
   private url: string
 
   constructor(private http: HttpClient) {

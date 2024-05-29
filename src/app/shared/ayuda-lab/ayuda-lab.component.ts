@@ -1,31 +1,33 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-ayuda-lab',
   templateUrl: './ayuda-lab.component.html',
 })
 export class AyudaLabComponent {
-  @Input() helpTitle: any
-  @Input() displayHelp: boolean
-  @Input() cols: any[]
-  @Input() rows: any[]
-  @Input() selected: any
-  @Input() pag: any
-  @Input() W_PRIM_LIN: any
-  @Input() W_INDICE: any
-  @Input() num: any
-  @Input() loading: boolean
-  @Input() excel: boolean
-  @Input() paginator: boolean
-  @Input() W_PROG: any
-  @Input() filters: boolean
-  @Input() W_SALGO: any
+  @Input() helpTitle: string
+  @Input() displayHelp!: boolean
+  @Input() cols!: Column[]
+  @Input() rows!: any[]
+  @Input() selected!: any
+  @Input() pag!: any
+  @Input() W_PRIM_LIN!: string
+  @Input() W_INDICE!: string
+  @Input() num!: any
+  @Input() loading!: boolean
+  @Input() excel!: boolean
+  @Input() paginator!: boolean
+  @Input() W_PROG!: string
+  @Input() filters!: boolean
+  @Input() W_SALGO!: string
   @Input() nextFlag: boolean
   @Input() previousFlag: boolean
-  @Input() W_C_MENSA: any
-  @Input() W_MENSA: any
+  @Input() W_C_MENSA!: string
+  @Input() W_MENSA!: string
+  @Input() acceptFlag!: boolean
 
-  @Input() params: any
+  @Input() params!: any
 
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()
@@ -33,7 +35,6 @@ export class AyudaLabComponent {
   @Output() previousPageEvent = new EventEmitter<any>()
   @Output() nextPageEvent = new EventEmitter<any>()
 
-  @Input() acceptFlag: boolean
 
   constructor() {
     this.paginator = false
@@ -44,9 +45,9 @@ export class AyudaLabComponent {
   }
 
   nextPageFlag(): boolean {
-    return this.W_MENSA == '42 ** CONTINUA' ||
-      this.W_MENSA == '193 CONTINUA' ||
-      this.W_SALGO == 'S'
+    return this.W_MENSA === '42 ** CONTINUA' ||
+      this.W_MENSA === '193 CONTINUA' ||
+      this.W_SALGO === 'S'
       ? false
       : true
   }

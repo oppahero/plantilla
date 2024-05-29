@@ -7,47 +7,54 @@
     -Se modifico la sección de summary para usar las nuevas propiedades de flex
     -Se modifico el transactionInfo para usar propiedades flex
     -Al componente dialog se le añadio la propiedad breakpoints, al igual que a la ayuda, y ayuda-edo-programa
+    -Al componente basic table se le añadio las propiedades "scrollable" y "scrollHeight"
+    -Al componente basic table se le añadio el estilo p-datatable-gridlines
 
 
-#En las operaciones
-
-    Clases creadas para modificar estilos
-        Tarjeta con menos padding y bordes rectos
+#Clases creadas para modificar estilos
+    + Tarjeta con menos padding y bordes rectos
         .card--operation {
             padding: 1rem;
             border-radius: 0;
         }
 
-        Para reducir espacio entre las filas de campos
+    + Para reducir espacio entre las filas de campos
         .field--operation {
             margin-bottom: 0;
         }
 
-        Para alinear el botón de consulta:
+    + Para alinear el botón de consulta:
         .flex-align-end {
             align-self: end;
             padding-bottom: 0.3rem;
         }
 
+    + Sección SubMenu para las operaciones
+
+
         Para el botón de consulta añadir:
             style="width: auto"
             class= flex-align-end
 
+#A considerar en las operaciones 
 
-    En los p-toolbar
+    + En los p-toolbar
         -Usar las secciones
             <div class="p-toolbar-group-start">
             <div class="p-toolbar-group-center">
             <div class="p-toolbar-group-end">
         -Para la separación entre los botones usar la clase:  class="mr-2"
 
-    En el TS los array COLS son de tipo   cols: Column[]
+    + En el TS los array COLS son de tipo  Column[]
         import { Column } from 'src/app/models/primeng'
+        cols: Column[]
 
-    Los inputs con FillWithCero ahora se esta usando el ngModel
+    + Los inputs con FillWithCero ahora se esta usando el ngModel
+
+    + El promise() por el suscribe
 
 
-#Propiedades En los componente de PrimeNG
+#Propiedades en los componente de PrimeNG
 
 - Calendarios:
 
@@ -65,16 +72,13 @@
 
     Definir:
         styleClass="p-datatable-gridlines"    : Para que se marquen las diviciones
-        scrollHeight="400px" (fixed headers)  : Para darle un tamaño fijo al alto de la tabla
-
-
-    Notas: Hay tablas que no requieren titulo
-
-
- [value]="results.parametro.N_PROG_DESP"
-            (input)="results.parametro.N_PROG_DESP = $event.target.value"
+        scrollHeight="280px" (fixed headers)  : Para darle un tamaño fijo al alto de la tabla
 
 
 
 https://ej2.syncfusion.com/angular/documentation/tab/how-to/adding-dynamic-items-with-content-reuse?cs-save-lang=1&cs-lang=ts
 https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fapp.component.ts
+
+
+FALTA SOLVENTAR
+<!-- (input)="dt.filter($event.target.value, col.field, 'startsWith')" -->

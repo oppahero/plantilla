@@ -26,10 +26,10 @@ export class LayoutService {
     _config: AppConfig = {
         ripple: false,
         inputStyle: 'outlined',
-        menuMode: 'overlay', //static  overlay
+        menuMode: 'static', //static  overlay
         colorScheme: 'light',
         theme: 'lara-light-indigo',  // bootstrap4-light-blue
-        scale: 12,
+        scale: 11,
     }
 
     config = signal<AppConfig>(this._config)
@@ -138,6 +138,7 @@ export class LayoutService {
 
         this.replaceThemeLink(newHref)
     }
+
     replaceThemeLink(href: string) {
         const id = 'theme-css'
         const themeLink = <HTMLLinkElement>document.getElementById(id)

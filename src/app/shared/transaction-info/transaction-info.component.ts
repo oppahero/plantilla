@@ -15,12 +15,12 @@ export class TransactionInfoComponent {
   displayHelp!: boolean
 
   getColor() {
-    if (this.W_TIPO_MENSA == 'FE') return '#dc3545'
-    if (this.W_TIPO_MENSA == 'WA') return '#f7d352'
+    if (this.W_TIPO_MENSA === 'FE') return '#dc3545'
+    if (this.W_TIPO_MENSA === 'WA') return '#f7d352'
     return '#28a745'
   }
 
-  display(value) {
+  display(value: boolean) {
     this.displayHelp = value
   }
 }

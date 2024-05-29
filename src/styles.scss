@@ -39,14 +39,17 @@ $gutter: 0.3rem; //for primeflex grid system
     position: fixed;
     color: white;
     background-color: var( --surface-50);
-    // background-color: black;
-    margin-top: 60px;
-    height: calc( 100% - 60px);
-    z-index: 998;
+    //?  antes de ponerlo a la altura del sidebar
+        // margin-top: 60px;
+        // height: calc( 100% - 60px); 
+    height: calc( 100% - 9rem);
     right: 0;
+    top: 6rem; //Para estar a la altura del sidebar
+    z-index: 998;
 
     overflow-y: auto;
     box-shadow: -3px 0px 3px rgba(0,0,0,.05);
+    border-top-left-radius: $borderRadius;
+    border-bottom-left-radius: $borderRadius;
     
-    // 0px 0px 2px rgba(0,0,0,.05), 0px 1px 4px rgba(0,0,0,.08)
 }

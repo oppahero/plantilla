@@ -1,10 +1,11 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core'
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[decimals]',
 })
 export class NumericDirective {
-  @Input() decimals: number
+  @Input() decimals!: number
 
   private check(value: string, decimals: number) {
     if (decimals <= 0) {

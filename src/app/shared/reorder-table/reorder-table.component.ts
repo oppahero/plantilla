@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
 import { TooltipModule } from 'primeng/tooltip'
+import { Column } from 'src/app/models/primeng'
 import { ExcelService } from 'src/app/services/excel.service'
 
 @Component({
@@ -22,26 +23,29 @@ import { ExcelService } from 'src/app/services/excel.service'
   templateUrl: './reorder-table.component.html',
 })
 export class ReorderTableComponent implements OnInit {
-  @Input() autoLayout: boolean
-  @Input() loading: boolean
-  @Input() cols: any[]
-  @Input() resizable: boolean
-  @Input() selected: any
-  @Input() paginator: boolean
-  @Input() num: any
-  @Input() key: any
+  @Input() scrollable: boolean = true
+  @Input() scrollHeight: string = '250px'
 
-  @Input() excel: boolean
-  @Input() filters: boolean
-  @Input() reorder: boolean
+  @Input() autoLayout!: boolean
+  @Input() loading!: boolean
+  @Input() cols!: Column[]
+  @Input() resizable!: boolean
+  @Input() selected!: any
+  @Input() paginator!: boolean
+  @Input() num!: any
+  @Input() key!: string
 
-  @Input() title: string
-  @Input() pag: string
+  @Input() excel!: boolean
+  @Input() filters!: boolean
+  @Input() reorder!: boolean
+
+  @Input() title!: string
+  @Input() pag!: string
   @Output() selectedEvent = new EventEmitter<any>()
 
-  filter: boolean
+  filter!: boolean
   first: number = 0
-  rows_: any[]
+  rows_!: any[]
 
   @Input()
   set rows(val: any) {
@@ -51,9 +55,8 @@ export class ReorderTableComponent implements OnInit {
 
   constructor(private excelService: ExcelService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.pag = null
-    // this.search = false;
   }
 
   select() {

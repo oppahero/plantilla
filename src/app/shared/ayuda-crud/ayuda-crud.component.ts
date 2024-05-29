@@ -1,37 +1,38 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-ayuda-crud',
   templateUrl: './ayuda-crud.component.html',
 })
 export class AyudaCrudComponent {
-  @Input() helpTitle: any
-  @Input() displayHelp: boolean
-  @Input() cols: any[]
-  @Input() rows: any[]
-  @Input() selected: any
-  @Input() pag: any
-  @Input() W_PRIM_LIN: any
-  @Input() W_INDICE: any
-  @Input() num: any
-  @Input() loading: boolean
-  @Input() excel: boolean
-  @Input() paginator: boolean
-  @Input() W_PROG: any
-  @Input() filters: boolean
-  @Input() W_SALGO: any
-  @Input() nextFlag: boolean
-  @Input() previousFlag: boolean
-  @Input() detailFlag: boolean
-  @Input() altaFlag: boolean
-  @Input() bajaFlag: boolean
-  @Input() updateFlag: boolean
-  @Input() acceptFlag: boolean
+  @Input() helpTitle!: string
+  @Input() displayHelp!: boolean
+  @Input() cols!: Column[]
+  @Input() rows!: any[]
+  @Input() selected!: any
+  @Input() pag!: any
+  @Input() W_PRIM_LIN!: string
+  @Input() W_INDICE!: string
+  @Input() num!: any
+  @Input() loading!: boolean
+  @Input() excel!: boolean
+  @Input() paginator!: boolean
+  @Input() W_PROG!: string
+  @Input() filters!: boolean
+  @Input() W_SALGO!: string
+  @Input() nextFlag!: boolean
+  @Input() previousFlag!: boolean
+  @Input() detailFlag!: boolean
+  @Input() altaFlag!: boolean
+  @Input() bajaFlag!: boolean
+  @Input() updateFlag!: boolean
+  @Input() acceptFlag!: boolean
 
-  @Input() W_C_MENSA: any
-  @Input() W_MENSA: any
+  @Input() W_C_MENSA!: string
+  @Input() W_MENSA!: string
 
-  @Input() params: any
+  @Input() params!: any
 
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()
@@ -53,9 +54,9 @@ export class AyudaCrudComponent {
   }
 
   nextPageFlag(): boolean {
-    return this.W_MENSA == '42 ** CONTINUA' ||
-      this.W_MENSA == '193 CONTINUA' ||
-      this.W_SALGO == 'S'
+    return this.W_MENSA === '42 ** CONTINUA' ||
+      this.W_MENSA === '193 CONTINUA' ||
+      this.W_SALGO === 'S'
       ? false
       : true
   }
@@ -77,6 +78,7 @@ export class AyudaCrudComponent {
   previousPage() {
     this.previousPageEvent.emit()
   }
+
   nextPage() {
     this.nextPageEvent.emit()
   }

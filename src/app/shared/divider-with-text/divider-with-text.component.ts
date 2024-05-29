@@ -10,8 +10,29 @@ import { Component, Input } from '@angular/core'
       </div>
     </section>
   `,
-  styleUrls: ['./divider-with-text.component.scss'],
+  styles: `
+  hr.hr-text {
+    position: relative;
+    height: 1px;
+    background: rgba(0,0,0,.1);
+  }
+
+  hr.hr-text::before {
+    content: attr(data-content);
+    display: inline-block;
+    background: #fff;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #999;
+    border-radius: 30rem;
+    padding: 0.2rem 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  `,
 })
 export class DividerWithTextComponent {
-  @Input() text: string
+  @Input() text!: string
 }

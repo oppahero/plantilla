@@ -8,8 +8,7 @@
 
 
     // !AÑADIDO
-    // min-height: 100vh; // antes era 100vh
-    // padding-top: 0;
+    // min-height: 100vh; // antes era 100vh    
     // position: relative;
     padding-top: 0;
 }
@@ -18,7 +17,7 @@
     flex: 1 1 auto;
 
    // !AÑADIDO
-    margin-top: 7rem;
+    margin-top: 6rem; //para estar a la misma altura del sidebar
     height: 50vh;
     overflow:scroll;
     // margin-right: 210px; con submenu  220px

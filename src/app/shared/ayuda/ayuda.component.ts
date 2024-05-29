@@ -1,30 +1,31 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-ayuda',
   templateUrl: './ayuda.component.html',
 })
 export class AyudaComponent {
-  @Input() helpTitle: any
-  @Input() displayHelp: boolean
-  @Input() cols: any[]
-  @Input() rows: any[]
-  @Input() selected: any
-  @Input() pag: any
-  @Input() num: any
-  @Input() loading: boolean
-  @Input() excel: boolean
-  @Input() paginator: boolean
+  @Input() helpTitle!: string
+  @Input() displayHelp!: boolean
+  @Input() cols!: Column[]
+  @Input() rows!: any[]
+  @Input() selected!: any
+  @Input() pag!: any
+  @Input() num!: any
+  @Input() loading!: boolean
+  @Input() excel!: boolean
+  @Input() paginator!: boolean
   @Input() W_PROG: any //no tiene uso
-  @Input() filters: boolean
+  @Input() filters!: boolean
 
-  @Input() nextFlag: boolean
-  @Input() previousFlag: boolean
-  @Input() W_C_MENSA: any
-  @Input() W_SALGO: any
+  @Input() nextFlag!: boolean
+  @Input() previousFlag!: boolean
+  @Input() W_C_MENSA!: string
+  @Input() W_SALGO!: string
   @Input() params: any //no tiene uso
-  @Input() W_MENSA: any
-  @Input() breakpoints: object
+  @Input() W_MENSA!: string
+  @Input() breakpoints!: object
 
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()
@@ -36,16 +37,15 @@ export class AyudaComponent {
     this.paginator = false
   }
 
-
   previousPageFlag(): boolean {
     return this.pag > '001' ? false : true
   }
 
   nextPageFlag(): boolean {
-    return this.W_C_MENSA == '010' ||
-      this.W_MENSA == '193 CONTINUA' ||
-      this.W_SALGO == 'S' ||
-      this.W_MENSA == 'CONTINUA'
+    return this.W_C_MENSA === '010' ||
+      this.W_MENSA === '193 CONTINUA' ||
+      this.W_SALGO === 'S' ||
+      this.W_MENSA === 'CONTINUA'
       ? false
       : true
   }

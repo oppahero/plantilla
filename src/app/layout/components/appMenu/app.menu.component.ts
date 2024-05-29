@@ -384,7 +384,7 @@ export class AppMenuComponent implements OnInit {
       items: this.items,
     }
   }
-  
+
   init() {
     this.items = []
     this.util.newMessage({

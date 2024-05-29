@@ -6,10 +6,17 @@ import { OperacionesService } from 'src/app/services/operaciones.service'
 @Component({
   selector: 'app-operaciones',
   templateUrl: './operaciones.component.html',
-  styleUrls: ['./operaciones.component.scss'],
+  styles: `
+    .operation-title{
+      color: black;
+      padding: 5px;
+      background: rgba(128, 128, 128, 0.705);
+      text-align: center;
+    }
+  `,
 })
 export class OperacionesComponent implements OnInit, OnDestroy {
-  items: MenuItem[]
+  items!: MenuItem[]
 
   constructor(
     private util: GlobalService,
@@ -27,7 +34,6 @@ export class OperacionesComponent implements OnInit, OnDestroy {
   }
 
   activeMenu($event) {
-    // console.log('tengo:', $event.target.textContent);
     this.operation.active($event.target.textContent)
   }
 }

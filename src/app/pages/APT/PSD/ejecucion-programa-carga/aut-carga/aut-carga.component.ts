@@ -80,7 +80,6 @@ export class AutCargaComponent implements OnInit {
       { field: 'CC_TRSP_CARGA', header: 'Placa Carga' },
       { field: 'MM_IND_ELAB', header: 'Origen' },
     ]
-
   }
 
   filter(results): object[] {
@@ -101,38 +100,31 @@ export class AutCargaComponent implements OnInit {
     }
   }
 
-  success(results: MDWResponse) {
-    const aux = this.filter(results)
-    this.results.parametro = results.parametro
-    this.rows = aux
-    if (aux) {
-      this.selected = this.rows[0]
-    }
-    this.loading = false
+  success(response: MDWResponse) {
+    this.rows = this.filter(response)
+    this.results.parametro = response.parametro
+
+    if (this.rows.length) this.selected = this.rows[0]
+
     this.notification(
-      results.parametro.W_TIPO_MENSA,
-      results.parametro.W_MENSA
+      response.parametro.W_TIPO_MENSA,
+      response.parametro.W_MENSA
     )
   }
 
   catchError(err) {
     console.log(err)
-    this.loading = false
     this.toast.showError('Ha ocurrido un error.')
   }
 
   getAll() {
     this.loading = true
 
-    this.autCargaService
-      .getAll(this.results)
-      .toPromise()
-      .then((results) => {
-        this.success(results)
-      })
-      .catch((err) => {
-        this.catchError(err)
-      })
+    this.autCargaService.getAll(this.results).subscribe({
+      next: (response) => this.success(response),
+      error: (err: Error) => this.catchError(err),
+      complete: () => this.loading = false
+    })
   }
 
   consult() {
@@ -161,7 +153,6 @@ export class AutCargaComponent implements OnInit {
       N_SECUEN_VIAJE: '',
     }
 
-    console.log(this.results)
     this.getAll()
   }
 
@@ -181,7 +172,6 @@ export class AutCargaComponent implements OnInit {
       results.parametro.W_MENSA
     )
 
-    this.loading = false
     this.refreshConsult(results)
   }
 
@@ -200,30 +190,22 @@ export class AutCargaComponent implements OnInit {
     const params = this.params_cs('X', 'X', this.selected.NN_SECUEN_PROG)
     this.loading = true
 
-    this.autCargaCanService
-      .cancel(params)
-      .toPromise()
-      .then((results) => {
-        this.success_cs(results)
-      })
-      .catch((err) => {
-        this.catchError(err)
-      })
+    this.autCargaCanService.cancel(params).subscribe({
+      next: (results) => this.success_cs(results),
+      error: (err) => this.catchError(err),
+      complete: () => this.loading = false
+    })
   }
 
   confirmation() {
     const params = this.params_cs('P', 'X', this.selected.NN_SECUEN_PROG)
     this.loading = true
 
-    this.autCargaConfirService
-      .confirm(params)
-      .toPromise()
-      .then((results) => {
-        this.success_cs(results)
-      })
-      .catch((err) => {
-        this.catchError(err)
-      })
+    this.autCargaConfirService.confirm(params).subscribe({
+      next: (results) => this.success_cs(results),
+      error: (err) => this.catchError(err),
+      complete: () => this.loading = false
+    })
   }
 
   /** Navegación */
@@ -234,31 +216,31 @@ export class AutCargaComponent implements OnInit {
   }
 
   nextPageFlag(): boolean {
-    return this.results.parametro.W_C_MENSA == '010' ? false : true
+    return this.results.parametro.W_C_MENSA === '010' ? false : true
   }
 
   // devFrente - confirmación
   devFrenteFlag(): boolean {
-    return this.results.parametro.C_EDO_PROG_MDW == '03' &&
+    return this.results.parametro.C_EDO_PROG_MDW === '03' &&
       this.selected &&
-      this.selected.CC_EDO_PROG == '03'
+      this.selected.CC_EDO_PROG === '03'
       ? false
       : true
   }
 
   // reordenar - cancelar
   rearrangeFLag(): boolean {
-    return this.results.parametro.C_EDO_PROG_MDW == '09' &&
+    return this.results.parametro.C_EDO_PROG_MDW === '09' &&
       this.selected &&
-      this.selected.CC_EDO_PROG == '09'
+      this.selected.CC_EDO_PROG === '09'
       ? false
       : true
   }
 
   reprintFlag(): boolean {
-    return this.results.parametro.C_EDO_PROG_MDW != '09' &&
+    return this.results.parametro.C_EDO_PROG_MDW !== '09' &&
       this.selected &&
-      this.selected.CC_EDO_PROG != '09'
+      this.selected.CC_EDO_PROG !== '09'
       ? false
       : true
   }
@@ -296,7 +278,7 @@ export class AutCargaComponent implements OnInit {
     this.autCargaService.setDate(this.date)
   }
 
-  navigate(route: string, value) {
+  navigate(route: string, value: any) {
     this.saveParams()
     this.router.navigate([route, value], {
       relativeTo: this.activatedRoute,
@@ -309,7 +291,7 @@ export class AutCargaComponent implements OnInit {
     this.displayHelp = value
   }
 
-  selectedHelp(value) {
+  selectedHelp(value: any) {
     this.results.parametro.C_EDO_PROG_MDW = this.util.fillWithCeros(
       value.NN_EDO_PROG,
       2
@@ -317,7 +299,7 @@ export class AutCargaComponent implements OnInit {
     this.results.parametro.D_EDO_PROG = value.DD_EDO_PROG
   }
 
-  selectedRow(value) {
+  selectedRow(value: any) {
     this.selected = value
   }
 
