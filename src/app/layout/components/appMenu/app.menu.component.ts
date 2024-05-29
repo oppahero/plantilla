@@ -37,7 +37,6 @@ export class AppMenuComponent implements OnInit {
     this.asset = this.util.urlAssets
     this.init()
 
-
     this.model = [
       {
         label: 'Inventario y Despacho',
@@ -46,6 +45,7 @@ export class AppMenuComponent implements OnInit {
             label: 'Prog. y Seg. de Despacho',
             icon: 'pi pi-fw pi-home',
             routerLink: ['apt/psd'],
+            routerLinkActiveOptions: '{ exact: false }',
             command: () => {
               this.PSD()
             },
@@ -79,6 +79,7 @@ export class AppMenuComponent implements OnInit {
                 command: () => {
                   this.PSD()
                 },
+                routerLinkActiveOptions: '{ exact: false }',
               },
               {
                 label: 'Ingresos al Almacén',
@@ -392,8 +393,6 @@ export class AppMenuComponent implements OnInit {
       items: this.items,
     })
   }
-
-
 
   PSD() {
     this.items = [
