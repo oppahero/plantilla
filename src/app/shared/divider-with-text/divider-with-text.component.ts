@@ -34,5 +34,5 @@ import { Component, Input } from '@angular/core'
   `,
 })
 export class DividerWithTextComponent {
-  @Input() text!: string
+  @Input() text: string = ''
 }

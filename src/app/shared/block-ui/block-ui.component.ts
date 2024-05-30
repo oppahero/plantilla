@@ -9,5 +9,5 @@ import { BlockUIModule } from 'primeng/blockui'
   imports: [CommonModule, BlockUIModule],
 })
 export class BlockUiComponent {
-  @Input() blocked!: boolean
+  @Input() blocked: boolean = false
 }

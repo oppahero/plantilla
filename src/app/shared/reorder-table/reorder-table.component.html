@@ -112,14 +112,11 @@
     <div>
       <div class="p-d-flex p-jc-between">
         <div>
-          <label
-            htmlFor="PAG"
-            [hidden]="pag === null"
-            style="padding-right: 10px"
+          <label htmlFor="PAG" [hidden]="!pag" style="padding-right: 10px"
             >Página:</label
           >
           <input
-            [hidden]="pag === null"
+            [hidden]="!pag"
             readonly
             [(ngModel)]="pag"
             type="text"

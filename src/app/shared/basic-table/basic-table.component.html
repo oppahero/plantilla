@@ -97,8 +97,8 @@
     <div class="flex justify-content-between flex-wrap">
       <!-- w-10rem -->
       <div class="flex align-items-center h-2rem m-2">
-        <label htmlFor="PAG" class="mr-2">Página:</label>
-        <input id="PAG" readonly [(ngModel)]="pag" style="width: 50px" pInputText />
+        <label [hidden]="!pag" htmlFor="PAG" class="mr-2">Página:</label>
+        <input [hidden]="!pag" id="PAG" readonly [(ngModel)]="pag" style="width: 50px" pInputText />
       </div>
       <div class="flex align-items-center h-2rem m-2">
         <ng-content></ng-content>

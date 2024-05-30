@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext'
@@ -22,29 +22,29 @@ import { ExcelService } from 'src/app/services/excel.service'
   ],
   templateUrl: './reorder-table.component.html',
 })
-export class ReorderTableComponent implements OnInit {
-  @Input() scrollable: boolean = true
+export class ReorderTableComponent {
+  @Input() cols!: Column[]
+  @Input() selected!: any
   @Input() scrollHeight: string = '250px'
 
-  @Input() autoLayout!: boolean
-  @Input() loading!: boolean
-  @Input() cols!: Column[]
-  @Input() resizable!: boolean
-  @Input() selected!: any
-  @Input() paginator!: boolean
-  @Input() num!: any
-  @Input() key!: string
+  @Input() scrollable: boolean = true
+  @Input() autoLayout: boolean = false
+  @Input() loading: boolean = false
+  @Input() resizable: boolean = false
+  @Input() paginator: boolean = false
+  @Input() excel: boolean = false
+  @Input() filters: boolean = false
+  @Input() reorder: boolean = false
 
-  @Input() excel!: boolean
-  @Input() filters!: boolean
-  @Input() reorder!: boolean
+  @Input() pag: string | undefined
+  @Input() num: number | undefined
+  @Input() key: string | undefined
+  @Input() title: string | undefined
 
-  @Input() title!: string
-  @Input() pag!: string
   @Output() selectedEvent = new EventEmitter<any>()
 
-  filter!: boolean
-  first: number = 0
+  filter = false
+  first = 0
   rows_!: any[]
 
   @Input()
@@ -54,10 +54,6 @@ export class ReorderTableComponent implements OnInit {
   }
 
   constructor(private excelService: ExcelService) {}
-
-  ngOnInit() {
-    this.pag = null
-  }
 
   select() {
     this.selectedEvent.emit(this.selected)

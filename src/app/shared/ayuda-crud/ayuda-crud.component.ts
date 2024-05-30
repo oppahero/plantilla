@@ -6,33 +6,33 @@ import { Column } from 'src/app/models/primeng'
   templateUrl: './ayuda-crud.component.html',
 })
 export class AyudaCrudComponent {
-  @Input() helpTitle!: string
-  @Input() displayHelp!: boolean
+  @Input() helpTitle: string = ''
   @Input() cols!: Column[]
-  @Input() rows!: any[]
+  @Input() rows: any[] = []
   @Input() selected!: any
-  @Input() pag!: any
-  @Input() W_PRIM_LIN!: string
-  @Input() W_INDICE!: string
-  @Input() num!: any
-  @Input() loading!: boolean
-  @Input() excel!: boolean
-  @Input() paginator!: boolean
-  @Input() W_PROG!: string
-  @Input() filters!: boolean
-  @Input() W_SALGO!: string
-  @Input() nextFlag!: boolean
-  @Input() previousFlag!: boolean
-  @Input() detailFlag!: boolean
-  @Input() altaFlag!: boolean
-  @Input() bajaFlag!: boolean
-  @Input() updateFlag!: boolean
-  @Input() acceptFlag!: boolean
 
-  @Input() W_C_MENSA!: string
-  @Input() W_MENSA!: string
+  @Input() displayHelp: boolean = false
+  @Input() loading: boolean = false
+  @Input() excel: boolean = false
+  @Input() paginator: boolean = false
+  @Input() filters: boolean = false
+  @Input() nextFlag: boolean = false
+  @Input() previousFlag: boolean = false
+  @Input() detailFlag: boolean = false
+  @Input() altaFlag: boolean = false
+  @Input() bajaFlag: boolean = false
+  @Input() updateFlag: boolean = false
+  @Input() acceptFlag: boolean = false
 
-  @Input() params!: any
+  @Input() pag: string | undefined
+  @Input() num: number | undefined
+  @Input() W_C_MENSA: string | undefined
+  @Input() W_SALGO: string | undefined
+  @Input() W_MENSA: string | undefined
+  @Input() W_PROG: string | undefined
+  @Input() W_INDICE: string | undefined
+  @Input() W_PRIM_LIN: string | undefined
+
 
   @Output() displayEvent = new EventEmitter<boolean>()
   @Output() selectEvent = new EventEmitter<any>()

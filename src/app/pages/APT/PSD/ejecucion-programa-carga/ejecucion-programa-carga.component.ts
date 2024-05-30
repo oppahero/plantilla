@@ -1,12 +1,11 @@
+import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core'
 import { EjeProgramaCargaService } from 'src/app/services/apt'
 import { Router, ActivatedRoute } from '@angular/router'
-import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core'
 import { MenuItem } from 'primeng/api'
 
 @Component({
   selector: 'app-ejecucion-programa-carga',
   templateUrl: './ejecucion-programa-carga.component.html',
-  styleUrls: ['./ejecucion-programa-carga.component.scss'],
 })
 export class EjecucionProgramaCargaComponent implements OnInit, AfterContentChecked {
   items: MenuItem[]

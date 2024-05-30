@@ -2,6 +2,7 @@ import { ConfirmDialogComponent, ToastComponent } from 'src/app/shared'
 import { AuthService, GlobalService } from 'src/app/services'
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
+import { Column, MDWResponse } from 'src/app/models'
 import { DatePipe } from '@angular/common'
 import { User } from 'src/app/models/user'
 import {
@@ -10,25 +11,24 @@ import {
   AutCargaLargosCanService,
   AutCargaLargosConfirService,
 } from 'src/app/services/apt'
-import { MDWResponse } from 'src/app/models'
-import { Column } from 'src/app/models/primeng'
 
 @Component({
   selector: 'app-aut-carga',
   templateUrl: './aut-carga.component.html',
-  styleUrls: ['./aut-carga.component.scss'],
   providers: [DatePipe],
 })
 export class AutCargaComponent implements OnInit {
-  user!: User
-  title!: string
-  cols!: Column[]
-  rows!: any[]
-  loading: boolean
+  user: User
+  title: string
+  cols: Column[]
+  rows: any[]
+  selected: any
+
   results: MDWResponse = { parametro: {}, tabla: [] }
-  displayHelp: boolean = false
-  selected!: any
-  date!: Date
+  date: Date
+
+  loading = false
+  displayHelp = false
 
   @ViewChild(ToastComponent) toast: ToastComponent
   @ViewChild(ConfirmDialogComponent) confirm: ConfirmDialogComponent
@@ -44,7 +44,6 @@ export class AutCargaComponent implements OnInit {
     private autCargaCanService: AutCargaLargosCanService,
     private autCargaConfirService: AutCargaLargosConfirService
   ) {
-    this.results.parametro.PAG = ''
     this.title = 'Ejecución de Programa de Carga - Autorización Carga'
   }
 
@@ -156,12 +155,10 @@ export class AutCargaComponent implements OnInit {
     this.getAll()
   }
 
-  /** */
-
   refreshConsult(results) {
     if (
-      results.parametro.W_TIPO_MENSA == '' ||
-      results.parametro.W_TIPO_MENSA == 'IN'
+      results.parametro.W_TIPO_MENSA === '' ||
+      results.parametro.W_TIPO_MENSA === 'IN'
     )
       this.consult()
   }

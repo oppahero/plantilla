@@ -1,15 +1,18 @@
-#En la plantilla
-- Menu tipo Overlay
-- Tamaño letra 11px
-- Gutter de 1rem a 0.3rem
+INSTALAR:
+    NodeJs 20.0.9 
 
-#En los componentes genericos que tenemos
-    -Se modifico la sección de summary para usar las nuevas propiedades de flex
-    -Se modifico el transactionInfo para usar propiedades flex
-    -Al componente dialog se le añadio la propiedad breakpoints, al igual que a la ayuda, y ayuda-edo-programa
-    -Al componente basic table se le añadio las propiedades "scrollable" y "scrollHeight"
-    -Al componente basic table se le añadio el estilo p-datatable-gridlines
+#En la plantilla por defecto se indico 
+    - Menu tipo Overlay
+    - Tamaño letra 11px
+    - Gutter de 0.3rem. Antes 1rem
 
+    Nota: Se modifican los estilos para incorporar un contenedor (fijo) para las operaciones
+
+#COLORES
+    primary: b52822
+    sombras: rgba(255, 38, 38, 0.5)
+    b527225b
+    boton hover #f54242
 
 #Clases creadas para modificar estilos
     + Tarjeta con menos padding y bordes rectos
@@ -31,12 +34,39 @@
 
     + Sección SubMenu para las operaciones
 
+#En los componentes genericos que tenemos
+    -Algunos se modificaron para ser standalone
+    -Las propiedades que no requerian ser any, les fue asignado el tipo de dato correcto
+    -basic-table se modifico la sección de summary para usar las nuevas propiedades de flex. Se tendrìa que hacer lo mismo con reorder-table
+    -basic-table se le añadio las propiedades "scrollable" y "scrollHeight"
+    -basic-table se le añadio el estilo p-datatable-gridlines
+    -transactionInfo se modificò para usar propiedades flex
+    -dialog se le añadio la propiedad breakpoints (@input), al igual que a la ayuda, y ayuda-edo-programa
+    -dialog se le añadio la propiedad width (@input)
 
-        Para el botón de consulta añadir:
-            style="width: auto"
-            class= flex-align-end
-
-#A considerar en las operaciones 
+# Operaciones en el TS
+    -Los Promise los marca como obsoletos, por lo que se reemplaza por el suscribe
+    -Los parámtros obtenidos de la ruta ahora se acceden asignados asi:  this.activatedRoute.snapshot.params['autCarga']
+    -Los array COLS son de tipo  Column[]
+        import { Column } from 'src/app/models/primeng'
+        cols: Column[]
+    
+# Operaciones en el html
+    + Cambiar las grillas e implementar las de PrimeFlex
+        -Indicar los espacios que ocuparia para pantallas sm,md,lg,xl
+        -Para añadir un margen en la parte inferior añadir class="mb-2"
+        -Para las tarjetas añadir class="card--operation"
+        -Para los campos añadir class="field--operation"
+        -Para botón consultar (no tiene label) añadir class="flex-align-end" y style="width: auto"
+            <div class="field field--operation flex-align-end">
+                <button
+                    style="width: auto"
+                    pButton
+                    pRipple
+                    label="Consultar"
+                    (click)="consult()"
+                ></button>
+            </div>
 
     + En los p-toolbar
         -Usar las secciones
@@ -45,36 +75,35 @@
             <div class="p-toolbar-group-end">
         -Para la separación entre los botones usar la clase:  class="mr-2"
 
-    + En el TS los array COLS son de tipo  Column[]
-        import { Column } from 'src/app/models/primeng'
-        cols: Column[]
+    + Los inputs con FillWithCero se esta usando el ngModel
 
-    + Los inputs con FillWithCero ahora se esta usando el ngModel
+    + En los Calendarios
+        -Añadir:
+            [iconDisplay]="'input'"  : Icono calendario sencillo
+            [showOnFocus]="false"    : Abre calendario si se da en el icono
 
-    + El promise() por el suscribe
+        -Retirar:
+            [locale]="es"   : ya no está disponible
+        
+        Nota: Se podria retirar  showButtonBar="true"
 
+    + Para las Tablas
+        -Añadir:
+            styleClass="p-datatable-gridlines"
+            scrollHeight="280px" (fixed headers)
 
-#Propiedades en los componente de PrimeNG
+#Eslint integrado en el proyecto
+    -Instalar en el VSCode
+        eslint
+        ErrorLens
 
-- Calendarios:
-
-    Añadir:
-      [iconDisplay]="'input'"  : Icono calendario sencillo
-      [showOnFocus]="false"    : Abre calendario si se da en el icono
-
-    Retirar:
-       [locale]="es"   : ya no está disponible
-
-    Nota: Se podria retirar  showButtonBar="true"
-    https://primeng.org/configuration#locale
-
-- Tablas
-
-    Definir:
-        styleClass="p-datatable-gridlines"    : Para que se marquen las diviciones
-        scrollHeight="280px" (fixed headers)  : Para darle un tamaño fijo al alto de la tabla
-
-
+    -Configuracion en VSCode settings.json
+        "[typescript]": {
+            "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit"
+        },
 
 https://ej2.syncfusion.com/angular/documentation/tab/how-to/adding-dynamic-items-with-content-reuse?cs-save-lang=1&cs-lang=ts
 https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fapp.component.ts
@@ -82,10 +111,3 @@ https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fapp.component.ts
 
 FALTA SOLVENTAR
 <!-- (input)="dt.filter($event.target.value, col.field, 'startsWith')" -->
-
-b52822 primary
-b527225b
-
-f5322b5b sombra no usada
-
-boton hover #f54242

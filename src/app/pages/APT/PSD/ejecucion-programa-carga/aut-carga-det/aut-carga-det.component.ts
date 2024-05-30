@@ -5,21 +5,21 @@ import { ActivatedRoute } from '@angular/router'
 import { ToastComponent } from 'src/app/shared'
 import { Location } from '@angular/common'
 import { User } from 'src/app/models/user'
-import { MDWResponse } from 'src/app/models'
-import { Column } from 'src/app/models/primeng'
+import { Column, MDWResponse } from 'src/app/models'
 
 @Component({
   selector: 'app-aut-carga-det',
   templateUrl: './aut-carga-det.component.html',
-  styleUrls: ['./aut-carga-det.component.scss'],
 })
 export class AutCargaDetComponent implements OnInit {
   user: User
   title: string
   cols: Column[]
   rows: any[]
-  loading: boolean
+
   results: MDWResponse = { parametro: {}, tabla: [] }
+
+  loading = false
 
   @ViewChild(ToastComponent) toast: ToastComponent
 
@@ -30,7 +30,6 @@ export class AutCargaDetComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private autCargaDetService: AutCargaLargosDetService
   ) {
-    this.results.parametro.PAG = ''
     this.title = 'Autorización Carga - Detalle'
   }
 
@@ -40,6 +39,7 @@ export class AutCargaDetComponent implements OnInit {
 
     this.results.parametro.N_SECUEN_PROG =
       this.activatedRoute.snapshot.params['autCarga']
+
     this.setCols()
     this.consult()
   }
@@ -69,7 +69,7 @@ export class AutCargaDetComponent implements OnInit {
     ]
   }
 
-  filter(results) {
+  filter(results): object[] {
     return results['tabla'].filter((x) => x.CC_ORDEN_ENTREGA_MDW != '')
   }
 
@@ -87,13 +87,12 @@ export class AutCargaDetComponent implements OnInit {
     }
   }
 
-  success(results) {
-    const aux = this.filter(results)
-    this.results.parametro = results['parametro']
-    this.rows = aux
+  success(response: MDWResponse) {
+    this.rows = this.filter(response)
+    this.results.parametro = response['parametro']
     this.notification(
-      results.parametro.W_TIPO_MENSA,
-      results.parametro.W_MENSA
+      response.parametro.W_TIPO_MENSA,
+      response.parametro.W_MENSA
     )
   }
 
@@ -107,28 +106,19 @@ export class AutCargaDetComponent implements OnInit {
 
     this.autCargaDetService
       .getAll(this.results)
-      .toPromise()
-      .then((results) => {
-        this.success(results)
+      .subscribe({
+        next: (response) =>this.success(response),
+        error: (err: Error) => this.catchError(err),
+        complete: () => this.loading = false
       })
-      .catch((err) => {
-        this.catchError(err)
-      })
-      .finally(() => (this.loading = false))
   }
 
   consult() {
-    const aux = { ...this.results.parametro }
+    const { N_SECUEN_PROG } = this.results.parametro
 
     this.results.parametro = {
       PAR_IDEN: this.user.username,
-      N_SECUEN_PROG_MDW: this.util.validate(aux.N_SECUEN_PROG),
-      C_GRP_ALM: '',
-      N_SECUEN_PROG: '',
-      W_INI_CONSU: '',
-      W_PRIM_LIN: '',
-      W_CLAVE: '',
-      PAG: '',
+      N_SECUEN_PROG_MDW: this.util.validate(N_SECUEN_PROG)
     }
 
     this.get()
@@ -139,7 +129,7 @@ export class AutCargaDetComponent implements OnInit {
   }
 
   nextPageFlag(): boolean {
-    return this.results.parametro.W_C_MENSA == '010' ? false : true
+    return this.results.parametro.W_C_MENSA === '010' ? false : true
   }
 
   back() {

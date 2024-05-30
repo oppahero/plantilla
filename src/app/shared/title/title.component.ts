@@ -20,5 +20,5 @@ import { Component, Input } from '@angular/core'
   `
 })
 export class TitleComponent {
-  @Input() title!: string
+  @Input() title: string = ''
 }
