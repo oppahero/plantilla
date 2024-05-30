@@ -18,6 +18,13 @@ import { FullScreenService } from '../fullScreen.service'
         margin-right: 1rem;
         color: var(--primary-color) !important;
       }
+
+      // .progress{
+      //   position: fixed;
+      //   top:0;
+      //   left: 0;
+      //   z-index: 1000;
+      // }
     `,
   ],
 })
@@ -37,7 +44,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private fullScreenService: FullScreenService,
+    private fullScreenService: FullScreenService
   ) {}
 
   ngOnInit() {
@@ -59,6 +66,8 @@ export class LoginComponent implements OnInit {
   login() {
     const formData = this.loginForm.getRawValue()
 
+    this.loading = true
+
     this.ldapService.login(formData).subscribe({
       next: (response) => {
         if (response.result) {
@@ -70,9 +79,13 @@ export class LoginComponent implements OnInit {
           this.getDni(formData)
         } else {
           this.addMessage(response.message)
+          this.loading = false
         }
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e)
+        this.loading = false
+      },
     })
   }
 
@@ -83,7 +96,10 @@ export class LoginComponent implements OnInit {
         if (aux) this.user.dni = aux.cedula
       },
       error: (e) => console.log(e),
-      complete: () => this.success(),
+      complete: () => {
+        this.success()
+        this.loading = false
+      },
     })
   }
 
@@ -94,8 +110,6 @@ export class LoginComponent implements OnInit {
   }
 
   addMessage(message: string) {
-    this.messages = [
-      { severity: 'warn', summary: message }
-   ]
+    this.messages = [{ severity: 'warn', summary: message }]
   }
 }

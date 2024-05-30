@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { PasswordModule } from 'primeng/password'
 import { InputTextModule } from 'primeng/inputtext'
 import { MessagesModule } from 'primeng/messages'
+import { ProgressBarModule } from 'primeng/progressbar'
+import { MessageService } from 'primeng/api'
 
 @NgModule({
     imports: [
@@ -19,8 +21,10 @@ import { MessagesModule } from 'primeng/messages'
         FormsModule,
         PasswordModule,
         ReactiveFormsModule,
-        MessagesModule
+        MessagesModule,
+        ProgressBarModule
     ],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent],
+    providers: [MessageService]
 })
 export class LoginModule { }
