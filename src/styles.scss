@@ -55,11 +55,18 @@ $gutter: 0.3rem; //for primeflex grid system
 }
 
 .submenu-sections {
-  height: 50%;
   overflow: auto;
   background-color: var(--surface-50);
   border-top-left-radius: $borderRadius;
   border-bottom-left-radius: $borderRadius;
+}
+
+.submenu-sections:nth-child(1){
+    height: 60%;
+}
+
+.submenu-sections:nth-child(2){
+    height: 40%;
 }
 
 // !AÑADIDO: Submenu se posiciona debajo de la operacion
