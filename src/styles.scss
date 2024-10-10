@@ -54,3 +54,18 @@ $gutter: 0.3rem; //for primeflex grid system
     border-bottom-left-radius: $borderRadius;
     
 }
+
+// !AÑADIDO: Submenu se posiciona debajo de la operacion
+@media screen and (max-width: 768px) {
+    .subMenu{
+        position: static;
+        width: 100%;
+        border-radius: $borderRadius;
+    }
+
+    .layout-main {
+        margin-right: 0;
+        height: 70vh;
+        margin-bottom: 1rem;
+    }
+}
