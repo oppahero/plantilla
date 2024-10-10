@@ -20,52 +20,59 @@ $gutter: 0.3rem; //for primeflex grid system
 
 //! /* Estilos editados para opensipca*/
 .card--operation {
-    padding: 1rem;
-    border-radius: 0;
+  padding: 1rem;
+  border-radius: 0;
 }
 
 .field--operation {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .flex-align-end {
-    align-self: end;
-    padding-bottom: 0.3rem;
+  align-self: end;
+  padding-bottom: 0.3rem;
 }
 
 // !AÑADIDO
-.subMenu{
-    // width: 220px;
-    width: 250px;
-    position: fixed;
-    color: white;
-    background-color: var( --surface-50);
-    //?  antes de ponerlo a la altura del sidebar
-        // margin-top: 60px;
-        // height: calc( 100% - 60px); 
-    height: calc( 100% - 7rem);
-    right: 0;
-    top: 6rem; //Para estar a la altura del sidebar
-    z-index: 998;
+.subMenu {
+  // width: 220px;
+  width: 250px;
+  position: fixed;
+  color: white;
+  // background-color: var( --surface-50);
+  //?  antes de ponerlo a la altura del sidebar
+  // margin-top: 60px;
+  // height: calc( 100% - 60px);
+  height: calc(100% - 7rem);
+  right: 0;
+  top: 6rem; //Para estar a la altura del sidebar
+  z-index: 998;
 
-    overflow-y: auto;
-    box-shadow: -3px 0px 3px rgba(0,0,0,.05);
-    border-top-left-radius: $borderRadius;
-    border-bottom-left-radius: $borderRadius;
-    
+  overflow-y: auto;
+  // box-shadow: -3px 0px 3px rgba(0,0,0,.05);
+  // border-top-left-radius: $borderRadius;
+  // border-bottom-left-radius: $borderRadius;
+}
+
+.submenu-sections {
+  height: 50%;
+  overflow: auto;
+  background-color: var(--surface-50);
+  border-top-left-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
 }
 
 // !AÑADIDO: Submenu se posiciona debajo de la operacion
 @media screen and (max-width: 768px) {
-    .subMenu{
-        position: static;
-        width: 100%;
-        border-radius: $borderRadius;
-    }
+  .subMenu {
+    position: static;
+    width: 100%;
+    border-radius: $borderRadius;
+  }
 
-    .layout-main {
-        margin-right: 0;
-        height: 70vh;
-        margin-bottom: 1rem;
-    }
+  .layout-main {
+    margin-right: 0;
+    height: 70vh;
+    margin-bottom: 1rem;
+  }
 }

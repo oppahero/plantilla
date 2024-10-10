@@ -13,11 +13,6 @@ import { OperacionesService } from 'src/app/services/operaciones.service'
       background: rgba(128, 128, 128, 0.705);
       text-align: center;
     }
-
-    .submenu-sections{
-      height: 50%;
-      overflow: auto;
-    }
   `,
 })
 export class OperacionesComponent implements OnInit, OnDestroy {
