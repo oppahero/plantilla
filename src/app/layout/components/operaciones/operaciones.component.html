@@ -1,9 +1,17 @@
-<div class="operation-title">
-  Operaciones
+<div class="submenu-sections">
+  <div class="operation-title">
+    Operaciones
+  </div>
+  <!-- [style]="{ 'max-height': '250px', overflow: 'auto' }" -->
+  <p-panelMenu    
+    [model]="items"
+    [multiple]="false"
+    (click)="activeMenu($event)"
+  ></p-panelMenu>
 </div>
-<p-panelMenu
-  [style]="{ 'max-height': '650px', overflow: 'auto' }"
-  [model]="items"
-  [multiple]="false"
-  (click)="activeMenu($event)"
-></p-panelMenu>
+<div class="submenu-sections">
+  <div class="operation-title">
+    Operaciones Favoritas
+  </div>
+  
+</div>
