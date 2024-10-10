@@ -9,7 +9,7 @@ import { OperacionesService } from 'src/app/services/operaciones.service'
   styles: `
     .operation-title{
       color: black;
-      padding: 5px;
+      padding: 2px;
       background: rgba(128, 128, 128, 0.705);
       text-align: center;
     }
