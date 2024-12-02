@@ -13,6 +13,8 @@
         />
       </span>
     </ng-template>
-    <ng-container *ngComponentOutlet="tab.component"></ng-container>
+    <ng-container
+      *ngComponentOutlet="tab.component; inputs: getHash(tab)"
+    ></ng-container>
   </p-accordionTab>
 </p-accordion>

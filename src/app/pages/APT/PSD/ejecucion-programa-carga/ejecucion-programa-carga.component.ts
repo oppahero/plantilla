@@ -1,46 +1,42 @@
-import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core'
-import { EjeProgramaCargaService } from 'src/app/services/apt'
-import { Router, ActivatedRoute } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
 import { MenuItem } from 'primeng/api'
 
 @Component({
   selector: 'app-ejecucion-programa-carga',
   templateUrl: './ejecucion-programa-carga.component.html',
 })
-export class EjecucionProgramaCargaComponent implements OnInit, AfterContentChecked {
+export class EjecucionProgramaCargaComponent implements OnInit {
   items: MenuItem[]
   activeItem: MenuItem
 
-  constructor(
-    private router: Router,
-    private cdRef: ChangeDetectorRef,
-    private tab: EjeProgramaCargaService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  // component: Type<any>
 
-  ngAfterContentChecked(): void {
-    this.cdRef.detectChanges()
-  }
+  // componentMap: { [key: string]: Type<any> } = {
+  //   AutCargaComponent,
+  //   AutCargaDetComponent,
+  // }
 
   ngOnInit(): void {
     this.items = [
-      { label: 'Autorización Carga', routerLink: 'aut-carga' },
-      { label: 'Ord. Programadas', routerLink: 'ord-prog-largos' },
-      { label: 'Frente de Despacho', routerLink: 'frent-desp' },
+      {
+        label: 'Autorización Carga',
+        // command: () => {
+        //   this.selectComponent('AutCargaComponent')
+        // },
+      },
+      { label: 'Ord. Programadas' },
+      { label: 'Frente de Despacho'},
     ]
 
     this.activeItem = this.items[0]
 
-    this.tab.customMessage.subscribe((i) => {
-      if (i) {
-        this.activeItem = this.items[i - 1]
-      }
-    })
+    // this.component = this.componentMap['AutCargaComponent']
   }
 
-  navigate() {
-    this.router.navigate([this.activeItem.routerLink], {
-      relativeTo: this.activatedRoute,
-    })
-  }
+  // selectComponent(type: string) {
+  //   const components = this.componentMap[type]
+  //   if (components !== this.component) {
+  //     this.component = components
+  //   }
+  // }
 }

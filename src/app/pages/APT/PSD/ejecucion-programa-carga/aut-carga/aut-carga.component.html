@@ -1,3 +1,5 @@
+<app-ejecucion-programa-carga />
+
 <div class="grid mb-2">
   <div class="col-12">
     <div class="card card--operation">
@@ -117,13 +119,7 @@
   [paginator]="false"
   (selectedEvent)="selectedRow($event)"
 >
-  <button
-    pButton
-    class="mr-2"
-    label="Detalle"
-    (click)="detail()"
-    [disabled]="!selected"
-  ></button>
+  <button pButton class="mr-2" label="Detalle" (click)="detail()"></button>
   <button
     pButton
     class="mr-2"

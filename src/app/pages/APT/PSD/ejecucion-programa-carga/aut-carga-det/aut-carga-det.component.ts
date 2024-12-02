@@ -1,11 +1,11 @@
 import { AutCargaLargosDetService } from 'src/app/services/apt'
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, Input, OnInit, ViewChild } from '@angular/core'
 import { AuthService, GlobalService } from 'src/app/services'
-import { ActivatedRoute } from '@angular/router'
 import { ToastComponent } from 'src/app/shared'
 import { Location } from '@angular/common'
 import { User } from 'src/app/models/user'
 import { Column, MDWResponse } from 'src/app/models'
+import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
 
 @Component({
   selector: 'app-aut-carga-det',
@@ -23,22 +23,30 @@ export class AutCargaDetComponent implements OnInit {
 
   @ViewChild(ToastComponent) toast: ToastComponent
 
+
+  dynamicHash: number
+
+  @Input() set hash(value: number) {
+    console.log(value)
+    this.dynamicHash = value
+  }
+
   constructor(
     private location: Location,
     private util: GlobalService,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute,
-    private autCargaDetService: AutCargaLargosDetService
+    private autCargaDetService: AutCargaLargosDetService,
+    private dynamicTabs: DynamicTabsComponent
   ) {
     this.title = 'Autorización Carga - Detalle'
   }
 
   ngOnInit(): void {
     this.user = this.authService.user()
-    this.results.parametro.PAR_IDEN = this.user.username
+    // this.results.parametro.PAR_IDEN = this.user.username
 
-    this.results.parametro.N_SECUEN_PROG =
-      this.activatedRoute.snapshot.params['autCarga']
+    // this.results.parametro.N_SECUEN_PROG =
+    //   this.activatedRoute.snapshot.params['autCarga']
 
     this.setCols()
     this.consult()
@@ -117,7 +125,7 @@ export class AutCargaDetComponent implements OnInit {
     const { N_SECUEN_PROG } = this.results.parametro
 
     this.results.parametro = {
-      PAR_IDEN: this.user.username,
+      PAR_IDEN: this.user?.username || '',
       N_SECUEN_PROG_MDW: this.util.validate(N_SECUEN_PROG)
     }
 
@@ -133,6 +141,7 @@ export class AutCargaDetComponent implements OnInit {
   }
 
   back() {
-    this.location.back()
+    // this.location.back()
+    this.dynamicTabs.back(this.dynamicHash)
   }
 }

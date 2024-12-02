@@ -4,16 +4,12 @@ import { filter, Subscription } from 'rxjs'
 import { LayoutService } from './service/app.layout.service'
 import { AppSidebarComponent } from './components/appSidebar/app.sidebar.component'
 import { AppTopBarComponent } from './components/appTopbar/app.topbar.component'
-import { TabSelected } from '../models/tab-selected'
-import { OpenInTabService } from './service/open-in-tab.service'
 
 @Component({
   selector: 'app-layout',
   templateUrl: './app.layout.component.html',
 })
 export class AppLayoutComponent implements OnDestroy {
-  // !Añadido
-  selection: TabSelected
 
   overlayMenuOpenSubscription: Subscription
 
@@ -30,8 +26,7 @@ export class AppLayoutComponent implements OnDestroy {
     public renderer: Renderer2,
     public router: Router,
 
-    // !Añadido
-    private dynamicTabs: OpenInTabService
+
   ) {
     this.overlayMenuOpenSubscription =
       this.layoutService.overlayOpen$.subscribe(() => {
@@ -91,11 +86,7 @@ export class AppLayoutComponent implements OnDestroy {
         this.hideProfileMenu()
       })
 
-    // !Añadido
-    this.dynamicTabs.tab.subscribe((x) => {
-      this.selection = x
-      console.log('Selection', this.selection)
-    })
+
   }
 
   hideMenu() {

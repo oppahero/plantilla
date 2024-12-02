@@ -9,7 +9,7 @@ export class OpenInTabService {
 
   public tab = this.message.asObservable()
 
-  public newTab(item: any): void {
+  public newTab(item: TabSelected): void {
     this.message.next(item)
   }
 }

@@ -5,6 +5,7 @@ import { User } from 'src/app/models'
 import { MenuItem } from 'primeng/api'
 import { AuthService, GlobalService } from 'src/app/services'
 import { OpenInTabService } from '../../service/open-in-tab.service'
+import { ejecProgCargaMap } from 'src/app/pages/APT/PSD/ejecucion-programa-carga/component-map'
 
 @Component({
   selector: 'app-menu',
@@ -97,10 +98,10 @@ export class AppMenuComponent implements OnInit {
             // routerLink: 'apt/psd/prog-carga-largo',
             component: 'EjecucionProgramaCargaComponent',
             command: () => {
-              console.log('click en eejec')
               this.dynamicTab.newTab({
                 label: 'Ejecución de Programa de Carga Largos',
-                componentName: 'EjecucionProgramaCargaComponent',
+                componentName: 'AutCargaComponent',
+                componentMap: ejecProgCargaMap
               })
             },
           },

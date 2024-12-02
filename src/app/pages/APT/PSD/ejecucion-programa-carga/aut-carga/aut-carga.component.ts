@@ -1,6 +1,6 @@
 import { ConfirmDialogComponent, ToastComponent } from 'src/app/shared'
 import { AuthService, GlobalService } from 'src/app/services'
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, Input, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Column, MDWResponse } from 'src/app/models'
 import { DatePipe } from '@angular/common'
@@ -11,6 +11,7 @@ import {
   AutCargaLargosCanService,
   AutCargaLargosConfirService,
 } from 'src/app/services/apt'
+import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
 
 @Component({
   selector: 'app-aut-carga',
@@ -33,6 +34,13 @@ export class AutCargaComponent implements OnInit {
   @ViewChild(ToastComponent) toast: ToastComponent
   @ViewChild(ConfirmDialogComponent) confirm: ConfirmDialogComponent
 
+  dynamicHash: number
+
+  @Input() set hash(value: number) {
+    console.log(value)
+    this.dynamicHash = value
+  }
+
   constructor(
     private router: Router,
     private datePipe: DatePipe,
@@ -42,7 +50,8 @@ export class AutCargaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private autCargaService: AutCargaLargosService,
     private autCargaCanService: AutCargaLargosCanService,
-    private autCargaConfirService: AutCargaLargosConfirService
+    private autCargaConfirService: AutCargaLargosConfirService,
+    private dynamicTabs: DynamicTabsComponent
   ) {
     this.title = 'Ejecución de Programa de Carga - Autorización Carga'
   }
@@ -117,12 +126,12 @@ export class AutCargaComponent implements OnInit {
   }
 
   getAll() {
-    this.loading = true
+    // this.loading = true
 
     this.autCargaService.getAll(this.results).subscribe({
       next: (response) => this.success(response),
       error: (err: Error) => this.catchError(err),
-      complete: () => this.loading = false
+      complete: () => {this.loading = false}
     })
   }
 
@@ -243,7 +252,11 @@ export class AutCargaComponent implements OnInit {
   }
 
   detail() {
-    this.navigate('detalle', this.selected.NN_SECUEN_PROG)
+
+    this.dynamicTabs.navigateTo(this.dynamicHash, 'AutCargaDetComponent')
+
+
+    // this.navigate('detalle', this.selected.NN_SECUEN_PROG)
   }
 
   devFrent() {
