@@ -8,10 +8,10 @@ const routes: Routes = [
     path: '',
     children: [
       //OPCIÓN: PROG. Y SEGUIMIENTO DE DESPACHO
-      {
-        path: 'psd',
-        loadChildren: () => import('./PSD/psd.module').then((m) => m.PSDModule),
-      },
+      // {
+      //   path: 'psd',
+      //   loadChildren: () => import('./PSD/psd.module').then((m) => m.PSDModule),
+      // },
       //OPCIÓN: INGRESOS AL ALMACEN
       // {
       //   path: 'ia',
