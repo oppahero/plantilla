@@ -1,11 +1,10 @@
-import { AutCargaLargosDetService } from 'src/app/services/apt'
+import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
 import { Component, Input, OnInit, ViewChild } from '@angular/core'
+import { AutCargaLargosDetService } from 'src/app/services/apt'
 import { AuthService, GlobalService } from 'src/app/services'
-import { ToastComponent } from 'src/app/shared'
-import { Location } from '@angular/common'
 import { User } from 'src/app/models/user'
 import { Column, MDWResponse } from 'src/app/models'
-import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
+import { ToastComponent } from 'src/app/shared'
 
 @Component({
   selector: 'app-aut-carga-det',
@@ -16,40 +15,33 @@ export class AutCargaDetComponent implements OnInit {
   title: string
   cols: Column[]
   rows: any[]
-
   results: MDWResponse = { parametro: {}, tabla: [] }
-
   loading = false
 
   @ViewChild(ToastComponent) toast: ToastComponent
 
+  @Input() hash : number
 
-  dynamicHash: number
+  @Input() set data(value: any) {
+    console.log('DATA en det', value)
 
-  @Input() set hash(value: number) {
-    console.log(value)
-    this.dynamicHash = value
+    if(value)
+      this.results.parametro.N_SECUEN_PROG = value
+
+    this.consult()
   }
 
   constructor(
-    private location: Location,
     private util: GlobalService,
     private authService: AuthService,
+    private dynamicTabs: DynamicTabsComponent,
     private autCargaDetService: AutCargaLargosDetService,
-    private dynamicTabs: DynamicTabsComponent
   ) {
     this.title = 'Autorización Carga - Detalle'
   }
 
   ngOnInit(): void {
-    this.user = this.authService.user()
-    // this.results.parametro.PAR_IDEN = this.user.username
-
-    // this.results.parametro.N_SECUEN_PROG =
-    //   this.activatedRoute.snapshot.params['autCarga']
-
     this.setCols()
-    this.consult()
   }
 
   setCols() {
@@ -115,14 +107,17 @@ export class AutCargaDetComponent implements OnInit {
     this.autCargaDetService
       .getAll(this.results)
       .subscribe({
-        next: (response) =>this.success(response),
+        next: (res) =>this.success(res),
         error: (err: Error) => this.catchError(err),
         complete: () => this.loading = false
       })
   }
 
   consult() {
+
     const { N_SECUEN_PROG } = this.results.parametro
+
+    this.user = this.authService.user()
 
     this.results.parametro = {
       PAR_IDEN: this.user?.username || '',
@@ -132,16 +127,11 @@ export class AutCargaDetComponent implements OnInit {
     this.get()
   }
 
-  nextPage() {
-    this.get()
-  }
-
   nextPageFlag(): boolean {
-    return this.results.parametro.W_C_MENSA === '010' ? false : true
+    return this.results.parametro.W_C_MENSA !== '010'
   }
 
   back() {
-    // this.location.back()
-    this.dynamicTabs.back(this.dynamicHash)
+    this.dynamicTabs.back(this.hash)
   }
 }

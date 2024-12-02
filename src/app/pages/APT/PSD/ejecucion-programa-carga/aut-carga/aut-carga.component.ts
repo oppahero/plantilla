@@ -1,6 +1,7 @@
+import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
 import { ConfirmDialogComponent, ToastComponent } from 'src/app/shared'
-import { AuthService, GlobalService } from 'src/app/services'
 import { Component, Input, OnInit, ViewChild } from '@angular/core'
+import { AuthService, GlobalService } from 'src/app/services'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Column, MDWResponse } from 'src/app/models'
 import { DatePipe } from '@angular/common'
@@ -11,7 +12,6 @@ import {
   AutCargaLargosCanService,
   AutCargaLargosConfirService,
 } from 'src/app/services/apt'
-import { DynamicTabsComponent } from 'src/app/layout/components/dynamicTabs/dynamicTabs.component'
 
 @Component({
   selector: 'app-aut-carga',
@@ -41,6 +41,17 @@ export class AutCargaComponent implements OnInit {
     this.dynamicHash = value
   }
 
+  @Input() set data(value: any) {
+
+    console.log(value)
+
+    if(value) {
+      const { params, date } = value
+      this.results.parametro = params
+      this.date = date
+    }
+  }
+
   constructor(
     private router: Router,
     private datePipe: DatePipe,
@@ -57,10 +68,10 @@ export class AutCargaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tab.activeAutCarga()
+    // this.tab.activeAutCarga()
     this.user = this.authService.user()
-    this.date = this.autCargaService.getDate()
-    this.results.parametro = this.autCargaService.getParams()
+    // this.date = this.autCargaService.getDate()
+    // this.results.parametro = this.autCargaService.getParams()
     this.setCols()
     this.consult()
   }
@@ -131,7 +142,9 @@ export class AutCargaComponent implements OnInit {
     this.autCargaService.getAll(this.results).subscribe({
       next: (response) => this.success(response),
       error: (err: Error) => this.catchError(err),
-      complete: () => {this.loading = false}
+      complete: () => {
+        this.loading = false
+      },
     })
   }
 
@@ -199,7 +212,7 @@ export class AutCargaComponent implements OnInit {
     this.autCargaCanService.cancel(params).subscribe({
       next: (results) => this.success_cs(results),
       error: (err) => this.catchError(err),
-      complete: () => this.loading = false
+      complete: () => (this.loading = false),
     })
   }
 
@@ -210,7 +223,7 @@ export class AutCargaComponent implements OnInit {
     this.autCargaConfirService.confirm(params).subscribe({
       next: (results) => this.success_cs(results),
       error: (err) => this.catchError(err),
-      complete: () => this.loading = false
+      complete: () => (this.loading = false),
     })
   }
 
@@ -253,8 +266,19 @@ export class AutCargaComponent implements OnInit {
 
   detail() {
 
-    this.dynamicTabs.navigateTo(this.dynamicHash, 'AutCargaDetComponent')
+    this.dynamicTabs.setDataOnComponentActive(
+      this.dynamicHash,
+      {
+        params : this.results.parametro,
+        date: this.date
+      }
+    )
 
+    this.dynamicTabs.navigateTo(
+      this.dynamicHash,
+      'AutCargaDetComponent',
+      this.selected.NN_SECUEN_PROG
+    )
 
     // this.navigate('detalle', this.selected.NN_SECUEN_PROG)
   }

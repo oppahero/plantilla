@@ -5,15 +5,21 @@ import { OpenInTabService } from '../../service/open-in-tab.service'
 import { Subscription } from 'rxjs'
 import { AutCargaComponent } from 'src/app/pages/APT/PSD/ejecucion-programa-carga/aut-carga/aut-carga.component'
 
+interface History {
+  componentName: string;
+  component: Type<any>;
+  data?: any;
+}
+
 interface Tab {
   title: string;
   component: Type<any>;
   id: number;
-
-  structure?: any;
-  activeTab?: Type<any>;
-  history?: any[];
+  history?: History[];
   componentMap?: { [key: string]: Type<any> };
+  data?: any;
+
+  activeTab?: Type<any>;
 }
 
 @Component({
@@ -31,11 +37,11 @@ export class DynamicTabsComponent implements OnDestroy {
 
   constructor(private dynamicTabs: OpenInTabService) {
     this.tabsSuscription = this.dynamicTabs.tab.subscribe(
-      (selected: TabSelected) => {
-        if (!selected) return
-        const { label, componentName, componentMap } = selected
+      (selectedData: TabSelected) => {
+        if (!selectedData) return
+        const { componentName, componentMap } = selectedData
         const component = this.getComponentByName(componentMap, componentName)
-        if (component) this.addTab(label, component, componentMap)
+        if (component) this.addTab(selectedData, component)
       }
     )
   }
@@ -52,13 +58,16 @@ export class DynamicTabsComponent implements OnDestroy {
     this.tabs = this.tabs.filter((t) => t !== tab)
   }
 
-  addTab(title: string, component: Type<any>, componentMap) {
+  addTab(selectedData: TabSelected, component: Type<any>) {
+    const { label: title, componentName, componentMap } = selectedData
+
     const existingTab = this.tabs.find((t) => t.title === title)
 
     if (!existingTab) {
       const id = this.id
       const newTab: Tab = { title, component, id, componentMap }
-      newTab.history = [newTab.component]
+
+      newTab.history = [{ component: newTab.component, componentName }]
 
       this.tabs.push(newTab)
     }
@@ -68,15 +77,23 @@ export class DynamicTabsComponent implements OnDestroy {
     return componentMap[name] || null
   }
 
-  navigateTo(hash: number, toComponent: string) {
+  navigateTo(hash: number, toComponent: string, data?: any) {
     const tabIndex = this.tabs.findIndex((tab) => tab.id === hash)
     const tabByIndex = this.tabs[tabIndex]
 
-    const newComponent = this.getComponentByName(tabByIndex.componentMap, toComponent)
+    const newComponent = this.getComponentByName(
+      tabByIndex.componentMap,
+      toComponent
+    )
 
     if (newComponent !== tabByIndex.component) {
-      this.tabs[tabIndex].history.push(newComponent)
+      this.tabs[tabIndex].history.push({
+        component: newComponent,
+        data,
+        componentName: toComponent,
+      })
       this.tabs[tabIndex].component = newComponent
+      this.tabs[tabIndex].data = data
     }
   }
 
@@ -89,11 +106,25 @@ export class DynamicTabsComponent implements OnDestroy {
 
     if (historyLength) {
       const last = this.tabs[tabIndex].history[historyLength - 1]
-      this.tabs[tabIndex].component = last
+      this.tabs[tabIndex] = {
+        ...this.tabs[tabIndex],
+        component: last.component,
+        data: last.data
+      }
     }
   }
 
-  getHash(tab: Tab) {
-    return { hash: tab.id }
+  getInputs(tab: Tab) {
+    return { hash: tab.id, data: tab.data }
+  }
+
+  setDataOnComponentActive(hash: number, data: any) {
+    const tabIndex = this.tabs.findIndex((tab) => tab.id === hash)
+
+    const activeComponent = this.tabs[tabIndex].component
+
+    const historyIndex = this.tabs[tabIndex].history.findIndex((i) => i.component === activeComponent )
+
+    this.tabs[tabIndex].history[historyIndex].data = data
   }
 }
