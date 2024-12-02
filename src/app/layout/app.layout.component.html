@@ -6,11 +6,12 @@
 
   <div class="layout-main-container">
     <div class="layout-main">
-      <router-outlet></router-outlet>
+      <!-- <router-outlet></router-outlet> -->
       <!-- <app-footer></app-footer> -->
+      <app-dynamic-tabs [add]="selection"></app-dynamic-tabs>
     </div>
     <section class="subMenu">
-        <app-operaciones></app-operaciones>
+      <app-operaciones></app-operaciones>
     </section>
   </div>
 

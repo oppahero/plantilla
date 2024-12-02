@@ -20,6 +20,14 @@ import { AppLayoutComponent } from './app.layout.component'
 import { OperacionesComponent } from './components/operaciones/operaciones.component'
 import { PanelMenuModule } from 'primeng/panelmenu'
 import { AvatarModule } from 'primeng/avatar'
+import { DynamicTabsComponent } from './components/dynamicTabs/dynamicTabs.component'
+import { EjecProgCargaLargosModule } from '../pages/APT/PSD/ejecucion-programa-carga/ejecucion-programa-carga.module'
+
+import { AccordionModule } from 'primeng/accordion'
+import { ButtonModule } from 'primeng/button'
+import { OpenInTabService } from './service/open-in-tab.service'
+
+
 @NgModule({
   declarations: [
     AppMenuitemComponent,
@@ -28,7 +36,8 @@ import { AvatarModule } from 'primeng/avatar'
     AppMenuComponent,
     AppSidebarComponent,
     AppLayoutComponent,
-    OperacionesComponent
+    OperacionesComponent,
+    DynamicTabsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +53,14 @@ import { AvatarModule } from 'primeng/avatar'
     RouterModule,
     AppConfigModule,
     PanelMenuModule,
-    AvatarModule
+    AvatarModule,
+
+    // !AÑADIDO
+    AccordionModule,
+    ButtonModule,
+    EjecProgCargaLargosModule
   ],
   exports: [AppLayoutComponent],
+  providers: [OpenInTabService]
 })
 export class AppLayoutModule {}

@@ -7,14 +7,14 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {
-        // Ejecución Programa Carga Largos - Por defecto: progCargaLargo
-        path: 'prog-carga-largo',
-        loadChildren: () =>
-          import(
-            '../PSD/ejecucion-programa-carga/ejecucion-programa-carga.module'
-          ).then((m) => m.EjecProgCargaLargosModule),
-      },
+      // {
+      //   // Ejecución Programa Carga Largos - Por defecto: progCargaLargo
+      //   path: 'prog-carga-largo',
+      //   loadChildren: () =>
+      //     import(
+      //       '../PSD/ejecucion-programa-carga/ejecucion-programa-carga.module'
+      //     ).then((m) => m.EjecProgCargaLargosModule),
+      // },
     ],
   },
 ]

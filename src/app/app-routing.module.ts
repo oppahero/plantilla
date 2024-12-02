@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   {
     path: '',
     component: AppLayoutComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [
       {
         path: 'apt',

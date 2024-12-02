@@ -33,5 +33,10 @@ import { AccordionModule } from 'primeng/accordion'
     AccordionModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    EjecucionProgramaCargaComponent,
+    AutCargaComponent,
+    AutCargaDetComponent,
+  ]
 })
 export class EjecProgCargaLargosModule {}

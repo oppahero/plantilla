@@ -18,6 +18,7 @@ import { OperacionesService } from 'src/app/services/operaciones.service'
 export class OperacionesComponent implements OnInit, OnDestroy {
   items!: MenuItem[]
 
+
   constructor(
     private util: GlobalService,
     private operation: OperacionesService
